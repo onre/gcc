@@ -85,6 +85,17 @@ class vr_values
   tree vrp_evaluate_conditional_warnv_with_ops (enum tree_code,
 						tree, tree, bool,
 						bool *, bool *);
+  tree rest_of_vrp_evaluate_conditional_warnv_with_ops (enum tree_code code,
+							tree op0, tree op1,
+							bool use_equiv_p,
+							bool *strict_overflow_p,
+							bool *only_ranges);
+  tree ovrflow_vrp_evaluate_conditional_warnv_with_ops (enum tree_code code,
+							tree op0, tree op1, tree x,
+							bool use_equiv_p,
+							bool *strict_overflow_p,
+							bool *only_ranges);
+
   void extract_range_from_assignment (value_range *, gassign *);
   void extract_range_from_assert (value_range *, tree);
   void extract_range_from_ssa_name (value_range *, tree);

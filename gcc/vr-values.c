@@ -2296,7 +2296,6 @@ vr_values::vrp_evaluate_conditional_warnv_with_ops (enum tree_code code,
 						    bool *strict_overflow_p,
 						    bool *only_ranges)
 {
-  tree ret;
   if (only_ranges)
     *only_ranges = true;
 
@@ -2316,60 +2315,108 @@ vr_values::vrp_evaluate_conditional_warnv_with_ops (enum tree_code code,
   tree x;
   if (overflow_comparison_p (code, op0, op1, use_equiv_p, &x))
     {
-      wide_int max = wi::max_value (TYPE_PRECISION (TREE_TYPE (op0)), UNSIGNED);
-      /* B = A - 1; if (A < B) -> B = A - 1; if (A == 0)
-         B = A - 1; if (A > B) -> B = A - 1; if (A != 0)
-         B = A + 1; if (B < A) -> B = A + 1; if (B == 0)
-         B = A + 1; if (B > A) -> B = A + 1; if (B != 0) */
+      tree ret1 = ovrflow_vrp_evaluate_conditional_warnv_with_ops (code, op0, op1, x,
+								   use_equiv_p,
+								   strict_overflow_p,
+								   only_ranges);
+
+      op1 = x;
       if (integer_zerop (x))
+	code = (code == LT_EXPR || code == LE_EXPR) ? EQ_EXPR : NE_EXPR;
+      else
+	code = (code == LT_EXPR || code == LE_EXPR) ? LE_EXPR : GT_EXPR;
+
+      tree ret2 = rest_of_vrp_evaluate_conditional_warnv_with_ops (code, op0, op1,
+								   use_equiv_p,
+								   strict_overflow_p,
+								   only_ranges);
+      gcc_assert (ret1 == ret2
+		  || (ret1 && ret2 && operand_equal_p (ret1, ret2, 0)));
+
+      return ret2;
+    }
+  else
+    return rest_of_vrp_evaluate_conditional_warnv_with_ops (code, op0, op1,
+							    use_equiv_p,
+							    strict_overflow_p,
+							    only_ranges);
+}
+
+tree vr_values::
+ovrflow_vrp_evaluate_conditional_warnv_with_ops (enum tree_code code,
+						 tree op0, tree op1, tree x,
+						 bool use_equiv_p,
+						 bool *strict_overflow_p,
+						 bool *only_ranges)
+{
+  wide_int max = wi::max_value (TYPE_PRECISION (TREE_TYPE (op0)), UNSIGNED);
+  /* B = A - 1; if (A < B) -> B = A - 1; if (A == 0)
+     B = A - 1; if (A > B) -> B = A - 1; if (A != 0)
+     B = A + 1; if (B < A) -> B = A + 1; if (B == 0)
+     B = A + 1; if (B > A) -> B = A + 1; if (B != 0) */
+  if (integer_zerop (x))
+    {
+      op1 = x;
+      code = (code == LT_EXPR || code == LE_EXPR) ? EQ_EXPR : NE_EXPR;
+    }
+  /* B = A + 1; if (A > B) -> B = A + 1; if (B == 0)
+     B = A + 1; if (A < B) -> B = A + 1; if (B != 0)
+     B = A - 1; if (B > A) -> B = A - 1; if (A == 0)
+     B = A - 1; if (B < A) -> B = A - 1; if (A != 0) */
+  else if (wi::to_wide (x) == max - 1)
+    {
+      op0 = op1;
+      op1 = wide_int_to_tree (TREE_TYPE (op0), 0);
+      code = (code == GT_EXPR || code == GE_EXPR) ? EQ_EXPR : NE_EXPR;
+    }
+  else
+    {
+      value_range vro, vri;
+      if (code == GT_EXPR || code == GE_EXPR)
 	{
-	  op1 = x;
-	  code = (code == LT_EXPR || code == LE_EXPR) ? EQ_EXPR : NE_EXPR;
+	  vro.set (VR_ANTI_RANGE, TYPE_MIN_VALUE (TREE_TYPE (op0)), x);
+	  vri.set (VR_RANGE, TYPE_MIN_VALUE (TREE_TYPE (op0)), x);
 	}
-      /* B = A + 1; if (A > B) -> B = A + 1; if (B == 0)
-         B = A + 1; if (A < B) -> B = A + 1; if (B != 0)
-         B = A - 1; if (B > A) -> B = A - 1; if (A == 0)
-         B = A - 1; if (B < A) -> B = A - 1; if (A != 0) */
-      else if (wi::to_wide (x) == max - 1)
+      else if (code == LT_EXPR || code == LE_EXPR)
 	{
-	  op0 = op1;
-	  op1 = wide_int_to_tree (TREE_TYPE (op0), 0);
-	  code = (code == GT_EXPR || code == GE_EXPR) ? EQ_EXPR : NE_EXPR;
+	  vro.set (VR_RANGE, TYPE_MIN_VALUE (TREE_TYPE (op0)), x);
+	  vri.set (VR_ANTI_RANGE, TYPE_MIN_VALUE (TREE_TYPE (op0)), x);
 	}
       else
-	{
-	  value_range vro, vri;
-	  if (code == GT_EXPR || code == GE_EXPR)
-	    {
-	      vro.set (VR_ANTI_RANGE, TYPE_MIN_VALUE (TREE_TYPE (op0)), x);
-	      vri.set (VR_RANGE, TYPE_MIN_VALUE (TREE_TYPE (op0)), x);
-	    }
-	  else if (code == LT_EXPR || code == LE_EXPR)
-	    {
-	      vro.set (VR_RANGE, TYPE_MIN_VALUE (TREE_TYPE (op0)), x);
-	      vri.set (VR_ANTI_RANGE, TYPE_MIN_VALUE (TREE_TYPE (op0)), x);
-	    }
-	  else
-	    gcc_unreachable ();
-	  value_range *vr0 = get_value_range (op0);
-	  /* If vro, the range for OP0 to pass the overflow test, has
-	     no intersection with *vr0, OP0's known range, then the
-	     overflow test can't pass, so return the node for false.
-	     If it is the inverted range, vri, that has no
-	     intersection, then the overflow test must pass, so return
-	     the node for true.  In other cases, we could proceed with
-	     a simplified condition comparing OP0 and X, with LE_EXPR
-	     for previously LE_ or LT_EXPR and GT_EXPR otherwise, but
-	     the comments next to the enclosing if suggest it's not
-	     generally profitable to do so.  */
-	  vro.intersect (vr0);
-	  if (vro.undefined_p ())
-	    return boolean_false_node;
-	  vri.intersect (vr0);
-	  if (vri.undefined_p ())
-	    return boolean_true_node;
-	}
+	gcc_unreachable ();
+      value_range *vr0 = get_value_range (op0);
+      /* If vro, the range for OP0 to pass the overflow test, has
+	 no intersection with *vr0, OP0's known range, then the
+	 overflow test can't pass, so return the node for false.
+	 If it is the inverted range, vri, that has no
+	 intersection, then the overflow test must pass, so return
+	 the node for true.  In other cases, we could proceed with
+	 a simplified condition comparing OP0 and X, with LE_EXPR
+	 for previously LE_ or LT_EXPR and GT_EXPR otherwise, but
+	 the comments next to the enclosing if suggest it's not
+	 generally profitable to do so.  */
+      vro.intersect (vr0);
+      if (vro.undefined_p ())
+	return boolean_false_node;
+      vri.intersect (vr0);
+      if (vri.undefined_p ())
+	return boolean_true_node;
     }
+
+  return rest_of_vrp_evaluate_conditional_warnv_with_ops (code, op0, op1,
+							  use_equiv_p,
+							  strict_overflow_p,
+							  only_ranges);
+}
+
+tree vr_values::
+rest_of_vrp_evaluate_conditional_warnv_with_ops (enum tree_code code,
+						 tree op0, tree op1,
+						 bool use_equiv_p,
+						 bool *strict_overflow_p,
+						 bool *only_ranges)
+{
+  tree ret;
 
   if ((ret = vrp_evaluate_conditional_warnv_with_ops_using_ranges
 	       (code, op0, op1, strict_overflow_p)))

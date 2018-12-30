@@ -51,6 +51,9 @@ along with GCC; see the file COPYING3.  If not see
 __inline
 #endif
 static unsigned int hash (const char *, unsigned int);
+#ifdef __GNUC_STDC_INLINE__
+__attribute__ ((__gnu_inline__))
+#endif
 #ifdef __GNUC__
 __inline
 #endif
@@ -96,7 +99,7 @@ hash (register const char *str, register unsigned int len)
       400, 400, 400, 400, 400, 400, 400, 400, 400, 400,
       400, 400, 400, 400, 400, 400, 400
     };
-  register int hval = len;
+  register int hval = (int) len;
 
   switch (hval)
     {

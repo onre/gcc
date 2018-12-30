@@ -38,6 +38,18 @@ case "${host}" in
     AM_ICONV
     ;;
 
+  *-irix*)
+    GLIBCXX_CHECK_LINKER_FEATURES
+    GLIBCXX_CHECK_MATH_SUPPORT
+    GLIBCXX_CHECK_STDLIB_SUPPORT
+    AC_DEFINE(_GLIBCXX_HAVE_STDINT_H)
+    # AC_DEFINE(_GLIBCXX_USE_RANDOM_TR1)
+    # no idea
+    #GCC_CHECK_TLS
+    # neither
+    # AM_ICONV
+    ;;
+
   *-darwin*)
     # Darwin versions vary, but the linker should work in a cross environment,
     # so we just check for all the features here.

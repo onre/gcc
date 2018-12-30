@@ -11437,6 +11437,9 @@ else
 		--enable-languages=${enable_languages-all} \
 		--target=$target_alias --host=$build_alias --build=$build_alias
 	CFLAGS="${saved_CFLAGS}"
+	if test ! -f auto-host.h ; then
+		as_fn_error $? "Failed to generate build configuration" "$LINENO" 5
+	fi
 
 	# We just finished tests for the build machine, so rename
 	# the file auto-build.h in the gcc directory.
@@ -16431,7 +16434,8 @@ fi
 int foo(void) {}
 _ACEOF
 if ac_fn_c_try_link "$LINENO"; then :
-  archive_expsym_cmds='$CC -shared $libobjs $deplibs $compiler_flags ${wl}-soname ${wl}$soname `test -n "$verstring" && func_echo_all "${wl}-set_version ${wl}$verstring"` ${wl}-update_registry ${wl}${output_objdir}/so_locations ${wl}-exports_file ${wl}$export_symbols -o $lib'
+  # archive_expsym_cmds='$CC -shared $libobjs $deplibs $compiler_flags ${wl}-soname ${wl}$soname `test -n "$verstring" && func_echo_all "${wl}-set_version ${wl}$verstring"` ${wl}-update_registry ${wl}${output_objdir}/so_locations ${wl}-exports_file ${wl}$export_symbols -o $lib'
+  archive_expsym_cmds='$CC -shared $libobjs $deplibs $compiler_flags ${wl}-soname ${wl}$soname `test -n "$verstring" && func_echo_all "${wl}-set_version ${wl}$verstring"` ${wl}-update_registry ${wl}${output_objdir}/so_locations -E -o $lib'
 
 fi
 rm -f core conftest.err conftest.$ac_objext \
@@ -16439,7 +16443,8 @@ rm -f core conftest.err conftest.$ac_objext \
         LDFLAGS="$save_LDFLAGS"
       else
 	archive_cmds='$CC -shared $libobjs $deplibs $compiler_flags -soname $soname `test -n "$verstring" && func_echo_all "-set_version $verstring"` -update_registry ${output_objdir}/so_locations -o $lib'
-	archive_expsym_cmds='$CC -shared $libobjs $deplibs $compiler_flags -soname $soname `test -n "$verstring" && func_echo_all "-set_version $verstring"` -update_registry ${output_objdir}/so_locations -exports_file $export_symbols -o $lib'
+	# archive_expsym_cmds='$CC -shared $libobjs $deplibs $compiler_flags -soname $soname `test -n "$verstring" && func_echo_all "-set_version $verstring"` -update_registry ${output_objdir}/so_locations -exports_file $export_symbols -o $lib'
+	archive_expsym_cmds='$CC -shared $libobjs $deplibs $compiler_flags -soname $soname `test -n "$verstring" && func_echo_all "-set_version $verstring"` -update_registry ${output_objdir}/so_locations -E -o $lib'
       fi
       archive_cmds_need_lc='no'
       hardcode_libdir_flag_spec='${wl}-rpath ${wl}$libdir'

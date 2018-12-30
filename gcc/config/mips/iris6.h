@@ -23,6 +23,9 @@ along with GCC; see the file COPYING3.  If not see
 #undef TARGET_IRIX6
 #define TARGET_IRIX6 1
 
+/* and using GNU ld now */
+#define IRIX_USING_GNU_LD 1
+
 /* Default to -mabi=n32 and -mips3.  */
 #undef MULTILIB_DEFAULTS
 #define MULTILIB_DEFAULTS { "mabi=n32" }

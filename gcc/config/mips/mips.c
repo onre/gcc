@@ -471,6 +471,12 @@ const struct mips_cpu_info *mips_tune_info;
 /* The ISA level associated with mips_arch.  */
 int mips_isa;
 
+#if TARGET_IRIX6
+/* On IRIX 6, intmax_t and uintmax_t depend on __c99, which is only
+   available in C-family compilers.  See irix6_c_common_override_options.  */
+int long_intmax = -1;
+#endif
+
 /* The ISA revision level.  This is 0 for MIPS I to V and N for
    MIPS{32,64}rN.  */
 int mips_isa_rev;

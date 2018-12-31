@@ -53245,6 +53245,7 @@ done
 
     $as_echo "#define _GLIBCXX_HAVE_STDINT_H 1" >>confdefs.h
 
+    ;;
 
   *-darwin*)
     # Darwin versions vary, but the linker should work in a cross environment,

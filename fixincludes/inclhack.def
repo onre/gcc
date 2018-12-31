@@ -3094,33 +3094,6 @@ fix = {
 /* END REINTRODUCE */
 
 /*
- *  Non-traditional "const" declaration in Irix's limits.h.
- */
-fix = {
-    hackname    = irix_limits_const;
-    files       = fixinc-test-limits.h, limits.h;
-    select      = "^extern const ";
-    c_fix       = format;
-    c_fix_arg   = "extern __const ";
-    test_text   = "extern const char limit; /* test limits */";
-};
-
-/*
- *  IRIX 5.x's stdio.h declares some functions that take a va_list as
- *  taking char *.  However, GCC uses void * for va_list, so
- *  calling vfprintf with a va_list fails in C++.  */
-fix = {
-    hackname  = irix_stdio_va_list;
-    files     = stdio.h;
-
-    select = '/\* va_list \*/ char \*';
-    c_fix  = format;
-    c_fix_arg = "__gnuc_va_list";
-    test_text =
-    "extern int printf( const char *, /* va_list */ char * );";
-};
-
-/*
  * These files in Sun OS 4.x and ARM/RISCiX and BSD4.3
  * use / * * / to concatenate tokens.
  */

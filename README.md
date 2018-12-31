@@ -27,6 +27,11 @@ First, install build dependencies. On a Debian or Ubuntu system they would be:
 You also need a copy of IRIX headers and libraries somewhere. We call
 that location `$IRIXROOT` from now on.
 
+The build will want to access a couple of specific .o files from
+$IRIXROOT/usr/lib32. I am a terrible person so I just symlinked
+$IRIXROOT/usr/lib32 to /usr/lib32 as Linux doesn't use it for
+anything.
+
 Then, get GNU binutils 2.17a source and build it to a prefix of your choice with these flags:
 ```
 ./configure --target=mips-sgi-irix6.5 --prefix=$BINUTILS_PREFIX --with-sysroot=$IRIXROOT --enable-werror=no
@@ -47,9 +52,9 @@ export STRIP_FOR_TARGET="mips-sgi-irix6.5-strip"
 export READELF_FOR_TARGET="mips-sgi-irix6.5-readelf"
 export target_configargs="--enable-libstdcxx-threads=no"
 
-$GCCSRC/configure --enable-obsolete --disable-multilib --prefix=$HOME/irix-gcc --target=mips-sgi-irix6.5 --disable-nls --enable-languages=c,c++
+$GCCSRC/configure --enable-obsolete --disable-multilib --prefix=$HOME/irix-gcc --target=mips-sgi-irix6.5 --disable-nls --enable-languages=c,c++ --with-sysroot=$IRIXROOT
 ```
-Run `make`. Building GNU Info file for gcc might fail - if it does, just `touch gcc/doc/gcc.info` and rerun `make`.
+Run `make`. Building GNU Info file for gcc might fail - if it does, just `touch gcc/doc/gcc.info` and rerun `make`. You can also do the `touch` part before running make.
 
 ## What is there to be done?
 

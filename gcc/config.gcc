@@ -260,7 +260,6 @@ case ${target} in
  | arm*-*-rtemself*			\
  | arm*-*-uclinux*			\
  | arm*-wince-pe*			\
- | mips-sgi-irix6.5			\
  | mips*-*-openbsd*			\
  | picochip-*				\
  | score-*				\

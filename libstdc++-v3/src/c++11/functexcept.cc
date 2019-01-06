@@ -38,7 +38,7 @@
 namespace __gnu_cxx
 {
   int __snprintf_lite(char *__buf, size_t __bufsize, const char *__fmt,
-		      va_list __ap);
+		      __gnuc_va_list __ap);
 }
 
 namespace std _GLIBCXX_VISIBILITY(default)
@@ -89,7 +89,7 @@ _GLIBCXX_BEGIN_NAMESPACE_VERSION
     // 512 bytes should provide more than enough space for expansion.
     const size_t __alloca_size = __len + 512;
     char *const __s = static_cast<char*>(__builtin_alloca(__alloca_size));
-    va_list __ap;
+    __gnuc_va_list __ap;
 
     va_start(__ap, __fmt);
     __gnu_cxx::__snprintf_lite(__s, __alloca_size, __fmt, __ap);

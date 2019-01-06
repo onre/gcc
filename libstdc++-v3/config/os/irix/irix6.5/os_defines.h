@@ -35,7 +35,8 @@
 
 #define _GLIBCXX_USE_C99_STDIO 0
 #define _GLIBCXX_USE_C99_STDLIB 1
-#define _GLIBCXX_USE_C99_WCHAR 1
+#define _GLIBCXX_USE_C99_WCHAR 0
+#define _GLIBCXX_USE_WCHAR_T 0
 
 // We need large file support.  There are two ways to turn it on: by
 // defining either _LARGEFILE64_SOURCE or _SGI_SOURCE.  However, it

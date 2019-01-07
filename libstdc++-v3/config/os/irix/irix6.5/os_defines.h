@@ -33,7 +33,8 @@
 // System-specific #define, typedefs, corrections, etc, go here.  This
 // file will come before all others.
 
-#define _GLIBCXX_USE_C99_STDIO 0
+#define _GLIBCXX_USE_C99 1
+#define _GLIBCXX_USE_C99_STDIO 1
 #define _GLIBCXX_USE_C99_STDLIB 1
 #define _GLIBCXX_USE_C99_WCHAR 0
 #define _GLIBCXX_USE_WCHAR_T 0

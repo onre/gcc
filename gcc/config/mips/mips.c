@@ -9852,7 +9852,8 @@ mips_file_start (void)
 	 -mlong64.  */
       if (mips_abi == ABI_EABI || mips_abi == ABI_O64)
 	fprintf (asm_out_file, "\t.section .gcc_compiled_long%d\n"
-		 "\t.previous\n", TARGET_LONG64 ? 64 : 32); 
+		 "\t.previous\n", TARGET_LONG64 ? 64 : 32);
+    }
       
   /* Record the ABI itself.  Modern versions of binutils encode
      this information in the ELF header flags, but GDB needs the
@@ -20040,11 +20041,10 @@ mips_option_override (void)
       REAL_MODE_FORMAT (DFmode) = &mips_double_format;
       REAL_MODE_FORMAT (TFmode) = &mips_quad_format;
     }
-
 #ifdef MIPS_TFMODE_FORMAT
   REAL_MODE_FORMAT (TFmode) = &MIPS_TFMODE_FORMAT;
 #endif
-  
+
   /* Make sure that the user didn't turn off paired single support when
      MIPS-3D support is requested.  */
   if (TARGET_MIPS3D

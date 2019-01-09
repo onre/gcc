@@ -6632,6 +6632,9 @@ mips_build_builtin_va_list (void)
       layout_type (record);
       return record;
     }
+  else if (TARGET_IRIX6)
+    /* On IRIX 6, this type is 'char *'.  */
+    return build_pointer_type (char_type_node);
   else
     /* Otherwise, we use 'void *'.  */
     return ptr_type_node;
@@ -9831,8 +9834,26 @@ mips_file_start (void)
   default_file_start ();
 
   /* Generate a special section to describe the ABI switches used to
-     produce the resultant binary.  */
-
+     produce the resultant binary.  This is unnecessary on IRIX and
+     causes unwanted warnings from the native linker.  */
+  if (!TARGET_IRIX6)
+    {
+      /* Record the ABI itself.  Modern versions of binutils encode
+	 this information in the ELF header flags, but GDB needs the
+	 information in order to correctly debug binaries produced by
+	 older binutils.  See the function mips_gdbarch_init in
+	 gdb/mips-tdep.c.  */
+      fprintf (asm_out_file, "\t.section .mdebug.%s\n\t.previous\n",
+	       mips_mdebug_abi_name ());
+      
+      /* There is no ELF header flag to distinguish long32 forms of the
+	 EABI from long64 forms.  Emit a special section to help tools
+	 such as GDB.  Do the same for o64, which is sometimes used with
+	 -mlong64.  */
+      if (mips_abi == ABI_EABI || mips_abi == ABI_O64)
+	fprintf (asm_out_file, "\t.section .gcc_compiled_long%d\n"
+		 "\t.previous\n", TARGET_LONG64 ? 64 : 32); 
+      
   /* Record the ABI itself.  Modern versions of binutils encode
      this information in the ELF header flags, but GDB needs the
      information in order to correctly debug binaries produced by
@@ -20020,6 +20041,10 @@ mips_option_override (void)
       REAL_MODE_FORMAT (TFmode) = &mips_quad_format;
     }
 
+#ifdef MIPS_TFMODE_FORMAT
+  REAL_MODE_FORMAT (TFmode) = &MIPS_TFMODE_FORMAT;
+#endif
+  
   /* Make sure that the user didn't turn off paired single support when
      MIPS-3D support is requested.  */
   if (TARGET_MIPS3D

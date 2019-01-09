@@ -421,7 +421,7 @@ struct mips_cpu_info {
   do									\
     {									\
       /* Everyone but IRIX defines this to mips.  */			\
-      if (!TARGET_IRIX6)
+      if (!TARGET_IRIX6)						\
       builtin_assert ("machine=mips");					\
       builtin_assert ("cpu=mips");					\
       builtin_define ("__mips__");     					\

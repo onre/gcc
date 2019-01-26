@@ -20,6 +20,8 @@ set orig_environment_saved 0
 set orig_ld_library_path_saved 0
 set orig_ld_run_path_saved 0
 set orig_shlib_path_saved 0
+set orig_ld_libraryn32_path_saved 0
+set orig_ld_library64_path_saved 0
 set orig_ld_library_path_32_saved 0
 set orig_ld_library_path_64_saved 0
 set orig_dyld_library_path_saved 0
@@ -53,6 +55,8 @@ proc set_ld_library_path_env_vars { } {
   global orig_ld_library_path_saved
   global orig_ld_run_path_saved
   global orig_shlib_path_saved
+  global orig_ld_libraryn32_path_saved
+  global orig_ld_library64_path_saved
   global orig_ld_library_path_32_saved
   global orig_ld_library_path_64_saved
   global orig_dyld_library_path_saved
@@ -62,6 +66,8 @@ proc set_ld_library_path_env_vars { } {
   global orig_ld_library_path
   global orig_ld_run_path
   global orig_shlib_path
+  global orig_ld_libraryn32_path
+  global orig_ld_library64_path
   global orig_ld_library_path_32
   global orig_ld_library_path_64
   global orig_dyld_library_path
@@ -101,6 +107,14 @@ proc set_ld_library_path_env_vars { } {
       set orig_shlib_path "$env(SHLIB_PATH)"
       set orig_shlib_path_saved 1
     }
+    if [info exists env(LD_LIBRARYN32_PATH)] {
+      set orig_ld_libraryn32_path "$env(LD_LIBRARYN32_PATH)"
+      set orig_ld_libraryn32_path_saved 1
+    }
+    if [info exists env(LD_LIBRARY64_PATH)] {
+      set orig_ld_library64_path "$env(LD_LIBRARY64_PATH)"
+      set orig_ld_library64_path_saved 1
+    }
     if [info exists env(LD_LIBRARY_PATH_32)] {
       set orig_ld_library_path_32 "$env(LD_LIBRARY_PATH_32)"
       set orig_ld_library_path_32_saved 1
@@ -124,11 +138,12 @@ proc set_ld_library_path_env_vars { } {
   # It only sets SHLIB_PATH and LD_LIBRARY_PATH when it executes a
   # program.  We also need the environment set for compilations, etc.
   #
-  # On Darwin, we have to set variables akin to LD_LIBRARY_PATH, but called
-  # DYLD_LIBRARY_PATH.  The same applies to Solaris 32 bit
-  # (LD_LIBRARY_PATH_32), Solaris 64 bit (LD_LIBRARY_PATH_64), and HP-UX
-  # (SHLIB_PATH).  In some cases, the variables are independent of
-  # LD_LIBRARY_PATH, and in other cases LD_LIBRARY_PATH is used if the
+    # On IRIX 6, we have to set variables akin to LD_LIBRARY_PATH, but
+  # called LD_LIBRARYN32_PATH (for the N32 ABI) and LD_LIBRARY64_PATH
+  # (for the 64-bit ABI).  The same applies to Darwin (DYLD_LIBRARY_PATH),
+  # Solaris 32 bit (LD_LIBRARY_PATH_32), Solaris 64 bit (LD_LIBRARY_PATH_64),
+  # and HP-UX (SHLIB_PATH).  In some cases, the variables are independent
+  # of LD_LIBRARY_PATH, and in other cases LD_LIBRARY_PATH is used if the
   # variable is not defined.
   #
   # Doing this is somewhat of a hack as ld_library_path gets repeated in
@@ -151,6 +166,20 @@ proc set_ld_library_path_env_vars { } {
     setenv SHLIB_PATH "$ld_library_path:$orig_shlib_path"
   } else {
     setenv SHLIB_PATH "$ld_library_path"
+  }
+  if { $orig_ld_libraryn32_path_saved } {
+    setenv LD_LIBRARYN32_PATH "$ld_library_path:$orig_ld_libraryn32_path"
+  } elseif { $orig_ld_library_path_saved } {
+    setenv LD_LIBRARYN32_PATH "$ld_library_path:$orig_ld_library_path"
+  } else {
+    setenv LD_LIBRARYN32_PATH "$ld_library_path"
+  }
+  if { $orig_ld_library64_path_saved } {
+    setenv LD_LIBRARY64_PATH "$ld_library_path:$orig_ld_library64_path"
+  } elseif { $orig_ld_library_path_saved } {
+    setenv LD_LIBRARY64_PATH "$ld_library_path:$orig_ld_library_path"
+  } else {
+    setenv LD_LIBRARY64_PATH "$ld_library_path"
   }
   if { $orig_ld_library_path_32_saved } {
     setenv LD_LIBRARY_PATH_32 "$ld_library_path:$orig_ld_library_path_32"
@@ -212,6 +241,8 @@ proc restore_ld_library_path_env_vars { } {
   global orig_ld_library_path_saved
   global orig_ld_run_path_saved
   global orig_shlib_path_saved
+  global orig_ld_libraryn32_path_saved
+  global orig_ld_library64_path_saved
   global orig_ld_library_path_32_saved
   global orig_ld_library_path_64_saved
   global orig_dyld_library_path_saved
@@ -219,6 +250,8 @@ proc restore_ld_library_path_env_vars { } {
   global orig_ld_library_path
   global orig_ld_run_path
   global orig_shlib_path
+  global orig_ld_libraryn32_path
+  global orig_ld_library64_path
   global orig_ld_library_path_32
   global orig_ld_library_path_64
   global orig_dyld_library_path
@@ -245,6 +278,16 @@ proc restore_ld_library_path_env_vars { } {
     setenv SHLIB_PATH "$orig_shlib_path"
   } elseif [info exists env(SHLIB_PATH)] {
     unsetenv SHLIB_PATH
+  }
+    if { $orig_ld_libraryn32_path_saved } {
+    setenv LD_LIBRARYN32_PATH "$orig_ld_libraryn32_path"
+  } elseif [info exists env(LD_LIBRARYN32_PATH)] {
+    unsetenv LD_LIBRARYN32_PATH
+  }
+  if { $orig_ld_library64_path_saved } {
+    setenv LD_LIBRARY64_PATH "$orig_ld_library64_path"
+  } elseif [info exists env(LD_LIBRARY64_PATH)] {
+    unsetenv LD_LIBRARY64_PATH
   }
   if { $orig_ld_library_path_32_saved } {
     setenv LD_LIBRARY_PATH_32 "$orig_ld_library_path_32"

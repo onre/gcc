@@ -54,6 +54,9 @@ proc prune_gcc_output { text } {
     regsub -all "(^|\n)\[^\n\]*: Additional NOP may be necessary to workaround Itanium processor A/B step errata" $text "" text
     regsub -all "(^|\n)\[^\n*\]*: Assembler messages:\[^\n\]*" $text "" text
 
+    # Ignore second line of IRIX 6 linker multiline message.
+    regsub -all "(^|\n)\[ \t\]*that might degrade performance on an older version \\(rev. 2.2\\) R4000 processor.\[^\n\]*" $text "" text
+
     # Ignore harmless VTA note.
     regsub -all "(^|\n)\[^\n\]*: note: variable tracking size limit exceeded with -fvar-tracking-assignments, retrying without\[^\n\]*" $text "" text
 

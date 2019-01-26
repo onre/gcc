@@ -24,7 +24,7 @@
    builds constants; the later is what we'll get from the negation operator
    at runtime.  */
 /* ??? This hack only works for big-endian, which is fortunately true for
-   AIX and, Darwin.  */
+   all of AIX, Darwin, and Irix.  */
 #if LDBL_MANT_DIG == 106
 # undef fpsizeofl
 # define fpsizeofl	sizeof(double)

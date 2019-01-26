@@ -1,4 +1,4 @@
-// { dg-do run { xfail { { ! cxa_atexit } && { ! *-*-solaris2* } } } }
+// { dg-do run { xfail { { ! cxa_atexit } && { ! { mips-sgi-irix* *-*-solaris2* } } } } }
 // { dg-require-effective-target cxa_atexit }
 #include <stdlib.h>
 

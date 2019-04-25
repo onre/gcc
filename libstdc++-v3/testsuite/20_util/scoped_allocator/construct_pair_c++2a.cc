@@ -18,8 +18,6 @@
 // { dg-options "-std=gnu++2a" }
 // { dg-do run { target c++2a } }
 
-// P0591R4 makes uses-allocator construction apply recursively for nested pairs
-
 #include <scoped_allocator>
 #include <vector>
 #include <testsuite_hooks.h>

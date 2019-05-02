@@ -682,6 +682,8 @@ _GLIBCXX_BEGIN_NAMESPACE_VERSION
       unique_ptr& operator=(const unique_ptr&) = delete;
     };
 
+  /// @relates unique_ptr @{
+
   template<typename _Tp, typename _Dp>
     inline
 #if __cplusplus > 201402L || !defined(__STRICT_ANSI__) // c++1z or gnu++11
@@ -750,14 +752,18 @@ _GLIBCXX_BEGIN_NAMESPACE_VERSION
   template<typename _Tp, typename _Dp>
     _GLIBCXX_NODISCARD inline bool
     operator<(const unique_ptr<_Tp, _Dp>& __x, nullptr_t)
-    { return std::less<typename unique_ptr<_Tp, _Dp>::pointer>()(__x.get(),
-								 nullptr); }
+    {
+      return std::less<typename unique_ptr<_Tp, _Dp>::pointer>()(__x.get(),
+								 nullptr);
+    }
 
   template<typename _Tp, typename _Dp>
     _GLIBCXX_NODISCARD inline bool
     operator<(nullptr_t, const unique_ptr<_Tp, _Dp>& __x)
-    { return std::less<typename unique_ptr<_Tp, _Dp>::pointer>()(nullptr,
-								 __x.get()); }
+    {
+      return std::less<typename unique_ptr<_Tp, _Dp>::pointer>()(nullptr,
+								 __x.get());
+    }
 
   template<typename _Tp, typename _Dp,
 	   typename _Up, typename _Ep>
@@ -786,14 +792,18 @@ _GLIBCXX_BEGIN_NAMESPACE_VERSION
   template<typename _Tp, typename _Dp>
     _GLIBCXX_NODISCARD inline bool
     operator>(const unique_ptr<_Tp, _Dp>& __x, nullptr_t)
-    { return std::less<typename unique_ptr<_Tp, _Dp>::pointer>()(nullptr,
-								 __x.get()); }
+    {
+      return std::less<typename unique_ptr<_Tp, _Dp>::pointer>()(nullptr,
+								 __x.get());
+    }
 
   template<typename _Tp, typename _Dp>
     _GLIBCXX_NODISCARD inline bool
     operator>(nullptr_t, const unique_ptr<_Tp, _Dp>& __x)
-    { return std::less<typename unique_ptr<_Tp, _Dp>::pointer>()(__x.get(),
-								 nullptr); }
+    {
+      return std::less<typename unique_ptr<_Tp, _Dp>::pointer>()(__x.get(),
+								 nullptr);
+    }
 
   template<typename _Tp, typename _Dp,
 	   typename _Up, typename _Ep>
@@ -830,6 +840,8 @@ _GLIBCXX_BEGIN_NAMESPACE_VERSION
 
 #define __cpp_lib_make_unique 201304
 
+  /// @cond undocumented
+
   template<typename _Tp>
     struct _MakeUniq
     { typedef unique_ptr<_Tp> __single_object; };
@@ -841,6 +853,8 @@ _GLIBCXX_BEGIN_NAMESPACE_VERSION
   template<typename _Tp, size_t _Bound>
     struct _MakeUniq<_Tp[_Bound]>
     { struct __invalid_type { }; };
+
+  /// @endcond
 
   /// std::make_unique for single objects
   template<typename _Tp, typename... _Args>
@@ -860,6 +874,7 @@ _GLIBCXX_BEGIN_NAMESPACE_VERSION
     make_unique(_Args&&...) = delete;
 #endif
 
+  // @} relates unique_ptr
   // @} group pointer_abstractions
 
 #if __cplusplus >= 201703L

@@ -1,10 +1,7 @@
-2019-08-12  Release Manager
+2019-05-04  Gerald Pfeifer  <gerald@pfeifer.com>
 
-	* GCC 9.2.0 released.
-
-2019-05-03  Release Manager
-
-	* GCC 9.1.0 released.
+	* crontab: Snapshots from trunk are now GCC 10 related.
+	Add GCC 9 snapshots from the respective branch.
 
 2019-02-23  Jonathan Wakely  <jwakely@redhat.com>
 

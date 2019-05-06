@@ -1,10 +1,13 @@
-2019-08-12  Release Manager
+2019-05-06  Martin Liska  <mliska@suse.cz>
+	    Hrishikesh Kulkarni  <hrishikeshparag@gmail.com>
 
-	* GCC 9.2.0 released.
-
-2019-05-03  Release Manager
-
-	* GCC 9.1.0 released.
+	* Make-lang.in: Add lto-common.o.
+	* config-lang.in: Likewise for gtfiles.
+	* lto-common.c: New file.
+	* lto-common.h: New file.
+	* lto-lang.c: Include lto-common.h.
+	* lto.c: Move most of the functionality
+	into lto-common.c file.
 
 2019-04-12  Jan Hubicka  <hubicka@ucw.cz>
 

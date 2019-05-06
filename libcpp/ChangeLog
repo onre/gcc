@@ -1,10 +1,10 @@
-2019-08-12  Release Manager
+2019-05-06  Nathan Sidwell  <nathan@acm.org>
 
-	* GCC 9.2.0 released.
-
-2019-05-03  Release Manager
-
-	* GCC 9.1.0 released.
+	* include/mkdeps.h: Rename struct deps to struct mkdeps.
+	* mkdeps.c: Likewise.
+	* include/cpplib.h (cpp_get_deps): Rename return type..
+	* directives.c (cpp_get_deps): Likewise.
+	* internal.h (struct cpp_reader): Rename deps field type.
 
 2019-04-03  Jonathan Wakely  <jwakely@redhat.com>
 

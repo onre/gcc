@@ -2599,7 +2599,7 @@ stmt_kills_ref_p (gimple *stmt, tree ref)
 
 static bool
 maybe_skip_until (gimple *phi, tree &target, basic_block target_bb,
-		  ao_ref *ref, tree vuse, unsigned int &limit, bitmap *visited,
+		  ao_ref *ref, tree vuse, unsigned int *cnt, bitmap *visited,
 		  bool abort_on_visited,
 		  void *(*translate)(ao_ref *, tree, void *, bool *),
 		  void *data)
@@ -2724,7 +2724,7 @@ get_continuation_for_phi (gimple *phi, ao_ref *ref,
       arg1 = PHI_ARG_DEF (phi, i);
       if (arg1 == arg0)
 	;
-      else if (! maybe_skip_until (phi, arg0, dom, ref, arg1, limit, visited,
+      else if (! maybe_skip_until (phi, arg0, dom, ref, arg1, cnt, visited,
 				   abort_on_visited,
 				   /* Do not translate when walking over
 				      backedges.  */

@@ -18884,18 +18884,12 @@ tsubst_copy_and_build (tree t,
 	      }
 	    if (thisarg)
 	      {
-		/* If there are no other args, just push 'this'.  */
-		if (cargs == 0)
-		  vec_safe_push (call_args, thisarg);
-		else
-		  {
-		    /* Otherwise, shift the other args over to make room.  */
-		    tree last = (*call_args)[cargs - 1];
-		    vec_safe_push (call_args, last);
-		    for (int i = cargs - 1; i > 0; --i)
-		      (*call_args)[i] = (*call_args)[i - 1];
-		    (*call_args)[0] = thisarg;
-		  }
+		/* Shift the other args over to make room.  */
+		tree last = (*call_args)[nargs - 1];
+		vec_safe_push (call_args, last);
+		for (int i = nargs-1; i > 0; --i)
+		  (*call_args)[i] = (*call_args)[i-1];
+		(*call_args)[0] = thisarg;
 	      }
 	    ret = build_call_a (function, call_args->length (),
 				call_args->address ());

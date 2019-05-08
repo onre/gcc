@@ -1,33 +1,8 @@
-2019-08-12  Release Manager
+2019-05-07  Hongtao Liu  <hongtao.liu@intel.com>
 
-	* GCC 9.2.0 released.
-
-2019-08-03  Iain Sandoe  <iain@sandoe.co.uk>
-
-	Backport from mainline.
-	2019-06-06  Iain Sandoe  <iain@sandoe.co.uk>
-
-	* config/rs6000/t-darwin: Ensure that the unwinder is built with
-	altivec enabled.
-
-2019-08-02  Iain Sandoe  <iain@sandoe.co.uk>
-
-	Backport from mainline.
-	2019-05-12  Iain Sandoe  <iain@sandoe.co.uk>
-
-	* config/rs6000/darwin-vecsave.S: Set .machine appropriately.
-
-2019-05-26  John David Anglin  <danglin@gcc.gnu.org>
-
-	* config/pa/linux-unwind.h (pa32_fallback_frame_state): Add cast.
-
-2019-05-04  Michael Meissner  <meissner@linux.ibm.com>
-
-	* ChangeLog.ibm: Delete unintentional commit on the wrong branch.
-
-2019-05-03  Release Manager
-
-	* GCC 9.1.0 released.
+	* config/i386/cpuinfo.c (get_available_features): Detect BF16.
+	* config/i386/cpuinfo.h (enum processor_features): Add
+	FEATURE_AVX512BF16.
 
 2019-04-23  Ramana Radhakrishnan  <ramana.radhakrishnan@arm.com>
 	    Bernd Edlinger  <bernd.edlinger@hotmail.de>

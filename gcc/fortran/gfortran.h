@@ -3467,7 +3467,6 @@ void gfc_delete_bbt (void *, void *, compare_fn);
 void gfc_dump_parse_tree (gfc_namespace *, FILE *);
 void gfc_dump_c_prototypes (gfc_namespace *, FILE *);
 void gfc_dump_external_c_prototypes (FILE *);
-void gfc_dump_global_symbols (FILE *);
 
 /* parse.c */
 bool gfc_parse_file (void);

@@ -33,7 +33,7 @@ msgstr ""
 "Project-Id-Version: gcc 9.1.0\n"
 "Report-Msgid-Bugs-To: https://gcc.gnu.org/bugs/\n"
 "POT-Creation-Date: 2019-05-02 20:28+0000\n"
-"PO-Revision-Date: 2019-05-29 18:58+0300\n"
+"PO-Revision-Date: 2019-03-05 00:07+0200\n"
 "Last-Translator: Lauri Nurmi <lanurmi@iki.fi>\n"
 "Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
 "Language: fi\n"
@@ -4291,8 +4291,9 @@ msgid "vector argument passed to unprototyped function"
 msgstr "AltiVec-argumentti välitetty funktiolle, jolla ei ole prototyyppiä"
 
 #: config/s390/s390.c:16057
+#, fuzzy
 msgid "types differ in signedness"
-msgstr "tyypit eroavat etumerkillisyyden osalta"
+msgstr "Tiedostot %s ja %s eroavat\n"
 
 #: config/s390/s390.c:16067
 #, fuzzy
@@ -5694,7 +5695,7 @@ msgid "The value of the PDT LEN parameter '%s' does not agree with that in the d
 msgstr "luetellun tyypin jäsenen %qE arvo ei ole kokonaislukuvakio"
 
 #: fortran/trans-decl.c:6025
-#, fuzzy, c-format
+#, c-format
 msgid "Actual string length does not match the declared one for dummy argument '%s' (%ld/%ld)"
 msgstr "liikaa argumentteja funktiolle %s %q+#D"
 
@@ -6396,24 +6397,20 @@ msgid "Set the default double precision kind to an 8 byte wide type."
 msgstr "Tuota koodia big-endian-tilassa"
 
 #: fortran/lang.opt:469
-#, fuzzy
 msgid "Set the default integer kind to an 8 byte wide type."
-msgstr "Tuota koodia big-endian-tilassa"
+msgstr ""
 
 #: fortran/lang.opt:473
-#, fuzzy
 msgid "Set the default real kind to an 8 byte wide type."
-msgstr "Tuota koodia big-endian-tilassa"
+msgstr ""
 
 #: fortran/lang.opt:477
-#, fuzzy
 msgid "Set the default real kind to an 10 byte wide type."
-msgstr "Tuota koodia big-endian-tilassa"
+msgstr ""
 
 #: fortran/lang.opt:481
-#, fuzzy
 msgid "Set the default real kind to an 16 byte wide type."
-msgstr "Tuota koodia big-endian-tilassa"
+msgstr ""
 
 #: fortran/lang.opt:485
 msgid "Allow dollar signs in entity names."
@@ -6838,9 +6835,8 @@ msgid "-Walloc-zero Warn for calls to allocation functions that specify zero byt
 msgstr "muuttuja %qD esitelty %<inline%>:ksi"
 
 #: c-family/c.opt:325
-#, fuzzy
 msgid "-Walloca-larger-than=<number>\tWarn on unbounded uses of alloca, and on bounded uses of alloca whose bound can be larger than <number> bytes."
-msgstr "muuttuja %qD esitelty %<inline%>:ksi"
+msgstr ""
 
 #: c-family/c.opt:331
 msgid "-Wno-alloca-larger-than Disable Walloca-larger-than= warning.  Equivalent to Walloca-larger-than=<SIZE_MAX> or larger."
@@ -7100,9 +7096,8 @@ msgid "Warn about zero-length formats."
 msgstr "Varoita nollan pituisista muotoiluista."
 
 #: c-family/c.opt:605
-#, fuzzy
 msgid "Warn about function calls with format strings that write past the end of the destination region."
-msgstr "%<%.*s%>-direktiivi kirjoittaa jopa %wu tavua %wu tavun kokoiseen alueeseen"
+msgstr ""
 
 #: c-family/c.opt:610
 #, fuzzy
@@ -9581,9 +9576,8 @@ msgid "Enable DWARF line debug info via GNU as."
 msgstr ""
 
 #: config/ia64/ia64.opt:110
-#, fuzzy
 msgid "Enable earlier placing stop bits for better scheduling."
-msgstr "Ota käyttöön RX FPU-käskyjen käyttö."
+msgstr ""
 
 #: config/ia64/ia64.opt:114 config/spu/spu.opt:72 config/pa/pa.opt:62
 #: config/sh/sh.opt:227
@@ -9715,9 +9709,8 @@ msgid "Maximum number of nops to insert for a hint (Default 2)."
 msgstr "Kumoamistoimintojen enimmäismäärä"
 
 #: config/spu/spu.opt:60
-#, fuzzy
 msgid "Approximate maximum number of instructions to allow between a hint and its branch [125]."
-msgstr "parametrin %qs maksimiarvo on %u"
+msgstr ""
 
 #: config/spu/spu.opt:64
 #, fuzzy
@@ -11381,9 +11374,8 @@ msgid "Code size: small, medium or large."
 msgstr "Koodin koko: small, medium tai large."
 
 #: config/m32r/m32r.opt:94
-#, fuzzy
 msgid "Don't call any cache flush functions."
-msgstr "Määrittele käytettävä ABI"
+msgstr ""
 
 #: config/m32r/m32r.opt:98
 #, fuzzy
@@ -11588,9 +11580,8 @@ msgid "Assume ES is zero throughout program execution, use ES: for read-only dat
 msgstr ""
 
 #: config/rl78/rl78.opt:97
-#, fuzzy
 msgid "Stores the MDUC registers in interrupt handlers for G13 target."
-msgstr "Määrittele käytettävä ABI"
+msgstr ""
 
 #: config/stormy16/stormy16.opt:24
 #, fuzzy
@@ -11743,9 +11734,8 @@ msgid "Valid arguments to -mtp=:"
 msgstr "Kelvolliset argumentit ovat:\n"
 
 #: config/arm/arm.opt:228
-#, fuzzy
 msgid "Thumb: Generate (non-leaf) stack frames even if not needed."
-msgstr "Tuota koodia big-endian-tilassa"
+msgstr ""
 
 #: config/arm/arm.opt:232
 #, fuzzy
@@ -12141,9 +12131,8 @@ msgid "Schedule the start and end of the procedure."
 msgstr "Aseta ohjelman alkuosoite"
 
 #: config/rs6000/rs6000.opt:259
-#, fuzzy
 msgid "Return all structures in memory (AIX default)."
-msgstr "Funktion ”%s” paluuarvoa kohdassa %L ei ole asetettu"
+msgstr ""
 
 #: config/rs6000/rs6000.opt:263
 #, fuzzy
@@ -12155,9 +12144,8 @@ msgid "Conform more closely to IBM XLC semantics."
 msgstr ""
 
 #: config/rs6000/rs6000.opt:271 config/rs6000/rs6000.opt:275
-#, fuzzy
 msgid "Generate software reciprocal divide and square root for better throughput."
-msgstr "Varoita käännösaikaisesta nollalla jaosta"
+msgstr ""
 
 #: config/rs6000/rs6000.opt:279
 msgid "Assume that the reciprocal estimate instructions provide more accuracy."
@@ -13807,9 +13795,8 @@ msgid "Change the amount of scheduler lookahead."
 msgstr ""
 
 #: config/frv/frv.opt:219
-#, fuzzy
 msgid "Assume a large TLS segment."
-msgstr "Käytä H8/300-kohdistussääntöjä"
+msgstr ""
 
 #: config/frv/frv.opt:223
 #, fuzzy
@@ -15587,24 +15574,27 @@ msgid "Provide bash completion for options starting with provided string."
 msgstr ""
 
 #: common.opt:292
+#, fuzzy
 msgid "Display this information."
-msgstr "Näytä tämä ohje."
+msgstr "  --help                   Näytä tämä ohje\n"
 
 #: common.opt:296
 msgid "--help=<class>\tDisplay descriptions of a specific class of options.  <class> is one or more of optimizers, target, warnings, undocumented, params."
 msgstr ""
 
 #: common.opt:417
+#, fuzzy
 msgid "Alias for --help=target."
-msgstr "Sama kuin --help=target."
+msgstr "Sama kuin --help=target"
 
 #: common.opt:442
 msgid "--param <param>=<value>\tSet parameter <param> to value.  See below for a complete list of parameters."
 msgstr ""
 
 #: common.opt:470
+#, fuzzy
 msgid "-O<number>\tSet optimization level to <number>."
-msgstr "-O<luku>\tAseta optimointitasoksi <luku>."
+msgstr "Aseta optimointitasoksi <luku>"
 
 #: common.opt:474
 #, fuzzy
@@ -15626,8 +15616,9 @@ msgid "This switch is deprecated; use -Wextra instead."
 msgstr "%J%qD on tavallisesti ei-staattinen funktio"
 
 #: common.opt:535
+#, fuzzy
 msgid "Warn about returning structures, unions or arrays."
-msgstr "Varoita tietueiden, unionien ja taulukoiden palauttamisesta."
+msgstr "Varoita tietueiden, unionien ja taulukoiden palauttamisesta"
 
 #: common.opt:539
 msgid "Warn if a loop with constant number of iterations triggers undefined behavior."
@@ -15681,20 +15672,24 @@ msgid "Warn when an optimization pass is disabled."
 msgstr "Varoita käyttämättömistä funktioista"
 
 #: common.opt:596
+#, fuzzy
 msgid "Treat all warnings as errors."
-msgstr "Ilmaise kaikki varoitukset virheinä."
+msgstr "Käsittele kaikki varoitukset virheinä"
 
 #: common.opt:600
+#, fuzzy
 msgid "Treat specified warning as error."
-msgstr "Ilmaise annettu varoitus virheenä."
+msgstr "Käsittele annettu varoitus virheenä"
 
 #: common.opt:604
+#, fuzzy
 msgid "Print extra (possibly unwanted) warnings."
-msgstr "Näytä ylimääräisiä (mahdollisesti ei-toivottuja) varoituksia."
+msgstr "Näytä ylimääräisiä (mahdollisesti ei-toivottuja) varoituksia"
 
 #: common.opt:608
+#, fuzzy
 msgid "Exit on the first error occurred."
-msgstr "Poistu ensimmäisen virheen myötä."
+msgstr "Tapahtui virhe"
 
 #: common.opt:612
 msgid "-Wframe-larger-than=<byte-size>\tWarn if a function's stack frame requires in excess of <byte-size>."
@@ -15741,8 +15736,9 @@ msgid "Warn about some C++ One Definition Rule violations during link time optim
 msgstr "odotettiin iteraatioesittelyä tai -alustusta"
 
 #: common.opt:665
+#, fuzzy
 msgid "Warn about overflow in arithmetic expressions."
-msgstr "Varoita ylivuodosta aritmeettisissa lausekkeissa."
+msgstr "Varoita ylivuodosta aritmeettisissa lausekkeissa"
 
 #: common.opt:669
 msgid "During link time optimization warn about mismatched types of global declarations."
@@ -16021,9 +16017,8 @@ msgid "Replace add, compare, branch with branch on count register."
 msgstr ""
 
 #: common.opt:1076
-#, fuzzy
 msgid "Use profiling information for branch probabilities."
-msgstr "säiekohtaista muistia ei tueta tälle kohteelle"
+msgstr ""
 
 #: common.opt:1080
 msgid "Perform branch target load optimization before prologue / epilogue threading."
@@ -16268,9 +16263,8 @@ msgid "Perform early inlining."
 msgstr "Suorita uusille äänitetyille tiedotteille:"
 
 #: common.opt:1379
-#, fuzzy
 msgid "Perform interprocedural reduction of aggregates."
-msgstr "Sähkökatko"
+msgstr ""
 
 #: common.opt:1383
 msgid "Perform unused symbol elimination in debug info."
@@ -16285,12 +16279,14 @@ msgid "Do not suppress C++ class debug information."
 msgstr ""
 
 #: common.opt:1395
+#, fuzzy
 msgid "Enable exception handling."
-msgstr "Käytä poikkeustenkäsittelyä."
+msgstr "Käytä poikkeustenkäsittelyä"
 
 #: common.opt:1399
+#, fuzzy
 msgid "Perform a number of minor, expensive optimizations."
-msgstr "Suorita useita pieniä, kalliita optimointeja."
+msgstr "moduulienvälisiä optimointeja ei ole toteutettu C++:lle"
 
 #: common.opt:1403
 msgid "-fexcess-precision=[fast|standard]\tSpecify handling of excess floating-point precision."
@@ -16313,9 +16309,8 @@ msgid "-ffixed-<register>\tMark <register> as being unavailable to the compiler.
 msgstr ""
 
 #: common.opt:1446
-#, fuzzy
 msgid "Don't allocate floats and doubles in extended-precision registers."
-msgstr "kohdemuoto ei tue äärettömyyttä"
+msgstr ""
 
 #: common.opt:1454
 #, fuzzy
@@ -16345,19 +16340,16 @@ msgid "Perform global common subexpression elimination."
 msgstr "moduulienvälisiä optimointeja ei ole toteutettu C++:lle"
 
 #: common.opt:1494
-#, fuzzy
 msgid "Perform enhanced load motion during global common subexpression elimination."
-msgstr "moduulienvälisiä optimointeja ei ole toteutettu C++:lle"
+msgstr ""
 
 #: common.opt:1498
-#, fuzzy
 msgid "Perform store motion after global common subexpression elimination."
-msgstr "moduulienvälisiä optimointeja ei ole toteutettu C++:lle"
+msgstr ""
 
 #: common.opt:1502
-#, fuzzy
 msgid "Perform redundant load after store elimination in global common subexpression elimination."
-msgstr "moduulienvälisiä optimointeja ei ole toteutettu C++:lle"
+msgstr ""
 
 #: common.opt:1507
 #, fuzzy
@@ -16450,9 +16442,8 @@ msgid "-fstack-reuse=[all|named_vars|none]\tSet stack reuse level for local vari
 msgstr ""
 
 #: common.opt:1626
-#, fuzzy
 msgid "Convert conditional jumps in innermost loops to branchless equivalents."
-msgstr "ehtolausekkeessa on tyyppiristiriita"
+msgstr ""
 
 #: common.opt:1638
 #, fuzzy
@@ -16516,19 +16507,16 @@ msgid "Perform interprocedural constant propagation."
 msgstr "Sähkökatko"
 
 #: common.opt:1714
-#, fuzzy
 msgid "Perform cloning to make Interprocedural constant propagation stronger."
-msgstr "Sähkökatko"
+msgstr ""
 
 #: common.opt:1722
-#, fuzzy
 msgid "Perform interprocedural bitwise constant propagation."
-msgstr "Sähkökatko"
+msgstr ""
 
 #: common.opt:1726
-#, fuzzy
 msgid "Perform interprocedural profile propagation."
-msgstr "Sähkökatko"
+msgstr ""
 
 #: common.opt:1730
 #, fuzzy
@@ -16541,14 +16529,12 @@ msgid "Discover pure and const functions."
 msgstr "epäkelpo tallennusluokka funktiolle %qs"
 
 #: common.opt:1738
-#, fuzzy
 msgid "Perform Identical Code Folding for functions and read-only variables."
-msgstr "continue-lause silmukan ulkopuolella"
+msgstr ""
 
 #: common.opt:1742
-#, fuzzy
 msgid "Perform Identical Code Folding for functions."
-msgstr "continue-lause silmukan ulkopuolella"
+msgstr ""
 
 #: common.opt:1746
 #, fuzzy
@@ -16601,9 +16587,8 @@ msgid "-fira-verbose=<number>\tControl IRA's level of diagnostic messages."
 msgstr ""
 
 #: common.opt:1825
-#, fuzzy
 msgid "Optimize induction variables on trees."
-msgstr "Tuota bittikäskyjä"
+msgstr ""
 
 #: common.opt:1829
 #, fuzzy
@@ -16661,9 +16646,8 @@ msgid "Report various link-time optimization statistics."
 msgstr "moduulienvälisiä optimointeja ei ole toteutettu C++:lle"
 
 #: common.opt:1900
-#, fuzzy
 msgid "Report various link-time optimization statistics for WPA only."
-msgstr "moduulienvälisiä optimointeja ei ole toteutettu C++:lle"
+msgstr ""
 
 #: common.opt:1904
 #, fuzzy
@@ -16930,9 +16914,8 @@ msgid "-flive-patching=[inline-only-static|inline-clone]\tControl IPA optimizati
 msgstr ""
 
 #: common.opt:2208
-#, fuzzy
 msgid "Relief of register pressure through live range shrinkage."
-msgstr "Ota käyttöön RX FPU-käskyjen käyttö."
+msgstr ""
 
 #: common.opt:2212
 #, fuzzy
@@ -16940,9 +16923,8 @@ msgid "Perform a register renaming optimization pass."
 msgstr "moduulienvälisiä optimointeja ei ole toteutettu C++:lle"
 
 #: common.opt:2216
-#, fuzzy
 msgid "Perform a target dependent instruction fusion optimization pass."
-msgstr "moduulienvälisiä optimointeja ei ole toteutettu C++:lle"
+msgstr ""
 
 #: common.opt:2220
 msgid "Reorder basic blocks to improve code placement."
@@ -16961,9 +16943,8 @@ msgid "Reorder functions to improve code placement."
 msgstr ""
 
 #: common.opt:2245
-#, fuzzy
 msgid "Add a common subexpression elimination pass after loop optimizations."
-msgstr "Käytä rekistereitä argumenttien välittämiseen"
+msgstr ""
 
 #: common.opt:2253
 msgid "Disable optimizations that assume default FP rounding behavior."
@@ -16979,14 +16960,12 @@ msgid "Enable register pressure sensitive insn scheduling."
 msgstr "Ota käyttöön RX FPU-käskyjen käyttö."
 
 #: common.opt:2265
-#, fuzzy
 msgid "Allow speculative motion of non-loads."
-msgstr "HALLINTA"
+msgstr ""
 
 #: common.opt:2269
-#, fuzzy
 msgid "Allow speculative motion of some loads."
-msgstr "HALLINTA"
+msgstr ""
 
 #: common.opt:2273
 #, fuzzy
@@ -17103,9 +17082,8 @@ msgid "Emit function prologues only before parts of the function that need it, r
 msgstr ""
 
 #: common.opt:2399
-#, fuzzy
 msgid "Shrink-wrap parts of the prologue and epilogue separately."
-msgstr "virheellinen ei-staattisen jäsenfunktion käyttö"
+msgstr ""
 
 #: common.opt:2403
 msgid "Disable optimizations observable by IEEE signaling NaNs."
@@ -17121,9 +17099,8 @@ msgid "Convert floating point constants to single precision constants."
 msgstr "ylivuoto implisiittisessä vakiomuunnoksessa"
 
 #: common.opt:2415
-#, fuzzy
 msgid "Split lifetimes of induction variables when loops are unrolled."
-msgstr "Tuota bittikäskyjä"
+msgstr ""
 
 #: common.opt:2419
 #, fuzzy
@@ -17379,9 +17356,8 @@ msgid "In SSA-PRE optimization on trees, enable partial-partial redundancy elimi
 msgstr ""
 
 #: common.opt:2695
-#, fuzzy
 msgid "Perform function-local points-to analysis on trees."
-msgstr "Sähkökatko"
+msgstr ""
 
 #: common.opt:2699
 #, fuzzy
@@ -17733,17 +17709,17 @@ msgid "Like -pedantic but issue them as errors."
 msgstr ""
 
 #: common.opt:3195
-#, fuzzy
 msgid "Do not display functions compiled or elapsed time."
-msgstr "virheellinen ei-staattisen jäsenfunktion käyttö"
+msgstr ""
 
 #: common.opt:3227
 msgid "Enable verbose output."
 msgstr "Ota käyttöön yksityiskohtainen tuloste."
 
 #: common.opt:3231
+#, fuzzy
 msgid "Display the compiler's version."
-msgstr "Näytä kääntäjän versio."
+msgstr "  --version                Näytä kääntäjän versiotiedot\n"
 
 #: common.opt:3235
 msgid "Suppress warnings."
@@ -17754,8 +17730,9 @@ msgid "Create a shared library."
 msgstr "Luo jaettu kirjasto."
 
 #: common.opt:3290
+#, fuzzy
 msgid "Don't create a dynamically linked position independent executable."
-msgstr "Älä luo dynaamisesti linkitettyä paikkariippumatonta suoritettavaa tiedostoa."
+msgstr "Älä luo paikkariippumatonta suoritettavaa tiedostoa."
 
 #: common.opt:3294
 #, fuzzy
@@ -19517,7 +19494,7 @@ msgid "cgraph count invalid"
 msgstr "oikealle siirron lukumäärä on negatiivinen"
 
 #: cgraph.c:3128
-#, fuzzy, gcc-internal-format
+#, gcc-internal-format
 msgid "inline clone in same comdat group list"
 msgstr "virheellinen sisäinen makro ”%s”"
 
@@ -19592,11 +19569,16 @@ msgid "inlined_to pointer refers to itself"
 msgstr "Väärä taikaluku --- RESERVED_13"
 
 #: cgraph.c:3268
+#, gcc-internal-format
+msgid "cgraph_node has wrong clone_of"
+msgstr ""
+
+#: cgraph.c:3281
 #, fuzzy, gcc-internal-format
 msgid "cgraph_node has wrong clone_of"
 msgstr "ei-muuttujan %qD esittely %<for%>-silmukan alkuesittelyssä"
 
-#: cgraph.c:3281
+#: cgraph.c:3287
 #, fuzzy, gcc-internal-format
 msgid "cgraph_node has wrong clone list"
 msgstr "ei-muuttujan %qD esittely %<for%>-silmukan alkuesittelyssä"
@@ -19607,7 +19589,7 @@ msgid "cgraph_node is in clone list but it is not clone"
 msgstr "ei-muuttujan %qD esittely %<for%>-silmukan alkuesittelyssä"
 
 #: cgraph.c:3292
-#, fuzzy, gcc-internal-format
+#, gcc-internal-format
 msgid "cgraph_node has wrong prev_clone pointer"
 msgstr "ei-muuttujan %qD esittely %<for%>-silmukan alkuesittelyssä"
 
@@ -21314,12 +21296,12 @@ msgid "specified bound %wu exceeds maximum object size %wu"
 msgstr "paikallisten objektien kokonaiskoko on liian suuri"
 
 #: gimple-ssa-sprintf.c:4107
-#, fuzzy, gcc-internal-format
+#, gcc-internal-format
 msgid "specified bound %wu exceeds %<INT_MAX%>"
 msgstr "paikallisten objektien kokonaiskoko on liian suuri"
 
 #: gimple-ssa-sprintf.c:4128
-#, fuzzy, gcc-internal-format
+#, gcc-internal-format
 msgid "specified bound range [%wu, %wu] exceeds %<INT_MAX%>"
 msgstr "Funktion %s argumentti kohdassa %L on negatiivinen"
 
@@ -21329,7 +21311,7 @@ msgid "%Gnull destination pointer"
 msgstr "nollaosoitin"
 
 #: gimple-ssa-sprintf.c:4197
-#, fuzzy, gcc-internal-format
+#, gcc-internal-format
 msgid "specified bound %wu exceeds the size %wu of the destination object"
 msgstr "%qE esitelty funktion palauttavana funktiona"
 
@@ -23726,7 +23708,7 @@ msgid "output operand is constant in %<asm%>"
 msgstr "virheellinen lvalue asm-tulosteessa %d"
 
 #: rtl.c:859
-#, fuzzy, gcc-internal-format, gfc-internal-format
+#, gcc-internal-format, gfc-internal-format
 msgid "RTL check: access of elt %d of '%s' with last elt %d in %s, at %s:%d"
 msgstr "verifiointi epäonnistui kohdassa PC=%d: %s"
 
@@ -23736,7 +23718,7 @@ msgid "RTL check: expected elt %d type '%c', have '%c' (rtx %s) in %s, at %s:%d"
 msgstr "verifiointi epäonnistui kohdassa PC=%d: %s"
 
 #: rtl.c:879
-#, fuzzy, gcc-internal-format, gfc-internal-format
+#, gcc-internal-format, gfc-internal-format
 msgid "RTL check: expected elt %d type '%c' or '%c', have '%c' (rtx %s) in %s, at %s:%d"
 msgstr "verifiointi epäonnistui kohdassa PC=%d: %s"
 
@@ -23761,17 +23743,17 @@ msgid "RTL check: attempt to treat non-block symbol as a block symbol in %s, at 
 msgstr ""
 
 #: rtl.c:946
-#, fuzzy, gcc-internal-format, gfc-internal-format
+#, gcc-internal-format, gfc-internal-format
 msgid "RTL check: access of hwi elt %d of vector with last elt %d in %s, at %s:%d"
 msgstr "verifiointi epäonnistui kohdassa PC=%d: %s"
 
 #: rtl.c:956
-#, fuzzy, gcc-internal-format, gfc-internal-format
+#, gcc-internal-format, gfc-internal-format
 msgid "RTL check: access of elt %d of vector with last elt %d in %s, at %s:%d"
 msgstr "verifiointi epäonnistui kohdassa PC=%d: %s"
 
 #: rtl.c:967
-#, fuzzy, gcc-internal-format, gfc-internal-format
+#, gcc-internal-format, gfc-internal-format
 msgid "RTL flag check: %s used with unexpected rtx code '%s' in %s, at %s:%d"
 msgstr "verifiointi epäonnistui kohdassa PC=%d: %s"
 
@@ -25768,7 +25750,7 @@ msgid "tree check: accessed operand %d of %s with %d operands in %s, at %s:%d"
 msgstr "verifiointi epäonnistui kohdassa PC=%d: %s"
 
 #: tree.c:10124
-#, fuzzy, gcc-internal-format, gfc-internal-format
+#, gcc-internal-format, gfc-internal-format
 msgid "tree check: accessed operand %d of omp_clause %s with %d operands in %s, at %s:%d"
 msgstr "verifiointi epäonnistui kohdassa PC=%d: %s"
 
@@ -25908,7 +25890,7 @@ msgid "Main variant is not defined"
 msgstr "”%s” on määrittelemättä"
 
 #: tree.c:14312
-#, fuzzy, gcc-internal-format
+#, gcc-internal-format
 msgid "TYPE_MAIN_VARIANT has different TYPE_MAIN_VARIANT"
 msgstr "tyyppitäsmäämättömyys komponenttiviitteessä"
 
@@ -26053,7 +26035,7 @@ msgid "TYPE_STRING_FLAG is set on wrong type code"
 msgstr ""
 
 #: tree.c:14634
-#, fuzzy, gcc-internal-format
+#, gcc-internal-format
 msgid "TYPE_METHOD_BASETYPE is not main variant"
 msgstr "funktiokutsu epäsopivan tyypin läpi"
 
@@ -32273,22 +32255,22 @@ msgid "ms_hook_prologue is not compatible with nested function"
 msgstr "ISO C kieltää sisäkkäiset funktiot"
 
 #: config/i386/i386.c:7377
-#, fuzzy, gcc-internal-format
+#, gcc-internal-format
 msgid "AVX512F vector argument without AVX512F enabled changes the ABI"
 msgstr "muodostimen virheellinen käyttö mallina"
 
 #: config/i386/i386.c:7383
-#, fuzzy, gcc-internal-format
+#, gcc-internal-format
 msgid "AVX512F vector return without AVX512F enabled changes the ABI"
 msgstr "muodostimen virheellinen käyttö mallina"
 
 #: config/i386/i386.c:7397
-#, fuzzy, gcc-internal-format
+#, gcc-internal-format
 msgid "AVX vector argument without AVX enabled changes the ABI"
 msgstr "muodostimen virheellinen käyttö mallina"
 
 #: config/i386/i386.c:7403
-#, fuzzy, gcc-internal-format
+#, gcc-internal-format
 msgid "AVX vector return without AVX enabled changes the ABI"
 msgstr "muodostimen virheellinen käyttö mallina"
 
@@ -32298,17 +32280,17 @@ msgid "SSE vector argument without SSE enabled changes the ABI"
 msgstr "muodostimen virheellinen käyttö mallina"
 
 #: config/i386/i386.c:7425
-#, fuzzy, gcc-internal-format
+#, gcc-internal-format
 msgid "SSE vector return without SSE enabled changes the ABI"
 msgstr "muodostimen virheellinen käyttö mallina"
 
 #: config/i386/i386.c:7441
-#, fuzzy, gcc-internal-format
+#, gcc-internal-format
 msgid "MMX vector argument without MMX enabled changes the ABI"
 msgstr "muodostimen virheellinen käyttö mallina"
 
 #: config/i386/i386.c:7447
-#, fuzzy, gcc-internal-format
+#, gcc-internal-format
 msgid "MMX vector return without MMX enabled changes the ABI"
 msgstr "muodostimen virheellinen käyttö mallina"
 
@@ -32623,7 +32605,7 @@ msgid "argument to %qE attribute is not (keep|thunk|thunk-inline|thunk-extern)"
 msgstr "%qE-attribuutti tarvitsee merkkijonovakioargumentin"
 
 #: config/i386/i386.c:41371
-#, fuzzy, gcc-internal-format
+#, gcc-internal-format
 msgid "interrupt service routine should have a pointer as the first argument"
 msgstr "keskeytyskäsittelijät eivät voi olla MIPS16-funktioita"
 
@@ -32633,7 +32615,7 @@ msgid "interrupt service routine should have %qs as the second argument"
 msgstr "keskeytyskäsittelijät eivät voi olla MIPS16-funktioita"
 
 #: config/i386/i386.c:41389
-#, fuzzy, gcc-internal-format
+#, gcc-internal-format
 msgid "interrupt service routine can only have a pointer argument and an optional integer argument"
 msgstr "keskeytyskäsittelijät eivät voi olla MIPS16-funktioita"
 
@@ -40084,7 +40066,7 @@ msgid "used vector type where scalar is required"
 msgstr "käytetty unionityypin arvoa, vaikka vaaditaan skalaari"
 
 #: c/c-typeck.c:12747 cp/semantics.c:9111
-#, fuzzy, gcc-internal-format
+#, gcc-internal-format
 msgid "%<#pragma omp cancel%> must specify one of %<parallel%>, %<for%>, %<sections%> or %<taskgroup%> clauses"
 msgstr "%Hdatamäärittelyllä ei ole tyyppiä eikä tallennusluokkaa"
 
@@ -40095,7 +40077,7 @@ msgid "expected %<cancel%> %<if%> clause modifier"
 msgstr "odotettiin %<operator%>"
 
 #: c/c-typeck.c:12803 cp/semantics.c:9168
-#, fuzzy, gcc-internal-format
+#, gcc-internal-format
 msgid "%<#pragma omp cancellation point%> must specify one of %<parallel%>, %<for%>, %<sections%> or %<taskgroup%> clauses"
 msgstr "%Hdatamäärittelyllä ei ole tyyppiä eikä tallennusluokkaa"
 
@@ -40385,7 +40367,7 @@ msgid "%qE appears more than once in %<nontemporal%> clauses"
 msgstr "funktiolle %2$qE annettu argumentin %1$d tyyppi on yhteensopimaton"
 
 #: c/c-typeck.c:14236 cp/semantics.c:6987
-#, fuzzy, gcc-internal-format
+#, gcc-internal-format
 msgid "%<depend%> clause with %<depobj%> dependence type on array section"
 msgstr "%<void%> vain parametrina ei ole oikeutettu"
 
@@ -40400,7 +40382,7 @@ msgid "%qE does not have %<omp_depend_t%> type in %<depend%> clause with %<depob
 msgstr "%<void%> vain parametrina ei ole oikeutettu"
 
 #: c/c-typeck.c:14272 cp/semantics.c:7042
-#, fuzzy, gcc-internal-format
+#, gcc-internal-format
 msgid "%qE should not have %<omp_depend_t%> type in %<depend%> clause with dependence type other than %<depobj%>"
 msgstr "%<void%> vain parametrina ei ole oikeutettu"
 
@@ -41213,7 +41195,7 @@ msgid "%qD clearing an object of type %#qT with no trivial copy-assignment%s"
 msgstr "%q#T-tyyppisiä epä-POD-objekteja ei voi välittää %<...%>:n kautta, ohjelma tulee keskeytymään ajettaessa"
 
 #: cp/call.c:9019
-#, gcc-internal-format
+#, fuzzy, gcc-internal-format
 msgid "%qD clearing an object of non-trivial type %#qT%s"
 msgstr "%qD tyhjentää ei-triviaalintyyppisen objektin %#qT%s"
 
@@ -42416,7 +42398,7 @@ msgid "conversion from %qH to %qI discards qualifiers"
 msgstr "muunnos tyypistä %qT tyyppiin %qT ei säilytä tyyppimääreitä"
 
 #: cp/cvt.c:497 cp/typeck.c:7536
-#, fuzzy, gcc-internal-format
+#, gcc-internal-format
 msgid "casting %qT to %qT does not dereference pointer"
 msgstr "oliko tarkoitus käyttää loogista negaatiota?"
 
@@ -55042,7 +55024,7 @@ msgid "PURE and IMPURE must not appear both at %C"
 msgstr ""
 
 #: fortran/decl.c:6235
-#, fuzzy, gcc-internal-format, gfc-internal-format
+#, gcc-internal-format, gfc-internal-format
 msgid "ELEMENTAL prefix in MODULE PROCEDURE interface is missing at %L"
 msgstr "Syntaksivirhe PROCEDURE-lauseessa kohdassa %C"
 
@@ -55052,7 +55034,7 @@ msgid "PURE prefix in MODULE PROCEDURE interface is missing at %L"
 msgstr "Syntaksivirhe PROCEDURE-lauseessa kohdassa %C"
 
 #: fortran/decl.c:6249
-#, fuzzy, gcc-internal-format, gfc-internal-format
+#, gcc-internal-format, gfc-internal-format
 msgid "RECURSIVE prefix in MODULE PROCEDURE interface is missing at %L"
 msgstr "Syntaksivirhe PROCEDURE-lauseessa kohdassa %C"
 
@@ -55097,7 +55079,7 @@ msgid "Duplicate symbol %qs in formal argument list at %C"
 msgstr "Kaksoiskappalesymboli ”%s” muodollisessa argumenttiluettelossa paikassa %C"
 
 #: fortran/decl.c:6454
-#, fuzzy, gcc-internal-format, gfc-internal-format
+#, gcc-internal-format, gfc-internal-format
 msgid "Mismatch in MODULE PROCEDURE formal argument names (%s/%s) at %C"
 msgstr "Syntaksivirhe PROCEDURE-lauseessa kohdassa %C"
 
@@ -55626,7 +55608,7 @@ msgid "%qs cannot be extended at %C because it is BIND(C)"
 msgstr "Muuttujalla ”%s” kohdassa %L ei voi olla sekä POINTER- että BIND(C)-attribuutit"
 
 #: fortran/decl.c:9717
-#, fuzzy, gcc-internal-format
+#, gcc-internal-format
 msgid "%qs cannot be extended at %C because it is a SEQUENCE type"
 msgstr "Muuttujalla ”%s” kohdassa %L ei voi olla sekä POINTER- että BIND(C)-attribuutit"
 
@@ -55826,7 +55808,7 @@ msgid "PROCEDURE list at %C"
 msgstr "Odotettiin moduuliproseduurinimeä kohdassa %C"
 
 #: fortran/decl.c:10873
-#, fuzzy, gcc-internal-format
+#, gcc-internal-format
 msgid "%<=> target%> is invalid for DEFERRED binding at %C"
 msgstr "Syntaksivirhe CASE-spesifikaatiossa kohdassa %C"
 
@@ -55851,7 +55833,7 @@ msgid "There is already a procedure with binding name %qs for the derived type %
 msgstr "%J%qD:lle ei ole aiempaa esittelyä"
 
 #: fortran/decl.c:10968
-#, fuzzy, gcc-internal-format, gfc-internal-format
+#, gcc-internal-format, gfc-internal-format
 msgid "GENERIC at %C must be inside a derived-type CONTAINS"
 msgstr "Syntaksivirhe VALUE-lauseessa kohdassa %C"
 
@@ -55876,7 +55858,7 @@ msgid "Expected %<=>%> at %C"
 msgstr "Odotettiin merkkiä ”,” kohdassa %C"
 
 #: fortran/decl.c:11068
-#, fuzzy, gcc-internal-format
+#, gcc-internal-format
 msgid "There's already a non-generic procedure with binding name %qs for the derived type %qs at %C"
 msgstr "%J%qD:lle ei ole aiempaa esittelyä"
 
@@ -55901,7 +55883,7 @@ msgid "Junk after GENERIC binding at %C"
 msgstr "Roskaa CALL-lauseen jälkeen kohdassa %C"
 
 #: fortran/decl.c:11187
-#, fuzzy, gcc-internal-format, gfc-internal-format
+#, gcc-internal-format, gfc-internal-format
 msgid "FINAL declaration at %C must be inside a derived type CONTAINS section"
 msgstr "Syntaksivirhe VALUE-lauseessa kohdassa %C"
 
@@ -60224,7 +60206,7 @@ msgid "%s collapsed loops don't form rectangular iteration space at %L"
 msgstr ""
 
 #: fortran/openmp.c:5703
-#, fuzzy, gcc-internal-format, gfc-internal-format
+#, gcc-internal-format, gfc-internal-format
 msgid "collapsed %s loops not perfectly nested at %L"
 msgstr "liian vähän argumentteja"
 
@@ -60259,7 +60241,7 @@ msgid "!$ACC LOOP %s loops don't form rectangular iteration space at %L"
 msgstr ""
 
 #: fortran/openmp.c:5870
-#, fuzzy, gcc-internal-format, gfc-internal-format
+#, gcc-internal-format, gfc-internal-format
 msgid "%s !$ACC LOOP loops not perfectly nested at %L"
 msgstr "liian vähän argumentteja"
 
@@ -60309,7 +60291,7 @@ msgid "OMP TARGET UPDATE at %L requires at least one TO or FROM clause"
 msgstr ""
 
 #: fortran/openmp.c:6229
-#, fuzzy, gcc-internal-format
+#, gcc-internal-format
 msgid "!$OMP DECLARE SIMD should refer to containing procedure %qs at %L"
 msgstr "tyhjä esittely"
 
@@ -62238,7 +62220,7 @@ msgid "Passed-object at %L must be scalar"
 msgstr "Lausekkeen CASE-lauseessa kohdassa %L on oltava skalaari"
 
 #: fortran/resolve.c:6079
-#, fuzzy, gcc-internal-format
+#, gcc-internal-format
 msgid "Base object for procedure-pointer component call at %L is of ABSTRACT type %qs"
 msgstr "FINAL-proseduurin argumentin kohdassa %L täytyy olla tyyppiä ”%s”"
 
@@ -62254,7 +62236,7 @@ msgstr "FINAL-proseduurin argumentin kohdassa %L täytyy olla tyyppiä ”%s”"
 
 #. Nothing matching found!
 #: fortran/resolve.c:6315
-#, fuzzy, gcc-internal-format
+#, gcc-internal-format
 msgid "Found no matching specific binding for the call to the GENERIC %qs at %L"
 msgstr "%J%qD:lle ei ole aiempaa esittelyä"
 
@@ -62608,7 +62590,7 @@ msgid "DTIO %s procedure at %L must be recursive"
 msgstr "Lausekkeen CASE-lauseessa kohdassa %L on oltava skalaari"
 
 #: fortran/resolve.c:9514
-#, fuzzy, gcc-internal-format, gfc-internal-format
+#, gcc-internal-format, gfc-internal-format
 msgid "Data transfer element at %L cannot be polymorphic unless it is processed by a defined input/output procedure"
 msgstr "muuttuvakokoista objektia ei voi alustaa"
 
@@ -62693,7 +62675,7 @@ msgid "Imageset argument at %L must between 1 and num_images()"
 msgstr "puhdistusargumentti ei ole tunniste"
 
 #: fortran/resolve.c:9816
-#, fuzzy, gcc-internal-format, gfc-internal-format
+#, gcc-internal-format, gfc-internal-format
 msgid "Statement at %L is not a valid branch target statement for the branch statement at %L"
 msgstr "Odotettiin muuttujaa READ-lauseessa kohdassa %C"
 
@@ -62955,7 +62937,7 @@ msgid "Implied SAVE for module variable %qs at %L, needed due to the default ini
 msgstr "muuttuvakokoista objektia ei voi alustaa"
 
 #: fortran/resolve.c:12362
-#, fuzzy, gcc-internal-format
+#, gcc-internal-format
 msgid "Entity %qs at %L has a deferred type parameter and requires either the POINTER or ALLOCATABLE attribute"
 msgstr "kolme pistettä sisältävä parametriluettelo ei sovellu tyhjään parametrinimiluettelon esittelyyn"
 
@@ -63025,7 +63007,7 @@ msgid "Character-valued statement function %qs at %L must have constant length"
 msgstr "%<__builtin_expect%>-funktion toisen argumentin pitää olla vakio"
 
 #: fortran/resolve.c:12605
-#, fuzzy, gcc-internal-format
+#, gcc-internal-format
 msgid "%qs is of a PRIVATE type and cannot be a dummy argument of %qs, which is PUBLIC at %L"
 msgstr "Proseduuri ”%s” kohdassa %L ei voi olla perustyyppiä %s"
 
@@ -63125,7 +63107,7 @@ msgid "Mismatch in ELEMENTAL attribute between MODULE PROCEDURE at %L and its in
 msgstr ""
 
 #: fortran/resolve.c:12881
-#, fuzzy, gcc-internal-format, gfc-internal-format
+#, gcc-internal-format, gfc-internal-format
 msgid "Mismatch in PURE attribute between MODULE PROCEDURE at %L and its interface in %s"
 msgstr "Syntaksivirhe PROCEDURE-lauseessa kohdassa %C"
 
@@ -63395,12 +63377,12 @@ msgid "Assumed size array %qs in namelist %qs at %L is not allowed"
 msgstr "Tyhjä taulukkomuodostin kohdassa %C ei ole sallittu"
 
 #: fortran/resolve.c:14504
-#, fuzzy, gcc-internal-format
+#, gcc-internal-format
 msgid "NAMELIST array object %qs with assumed shape in namelist %qs at %L"
 msgstr "funktiota %<__builtin_next_arg%> kutsuttu ilman argumenttia"
 
 #: fortran/resolve.c:14510
-#, fuzzy, gcc-internal-format
+#, gcc-internal-format
 msgid "NAMELIST array object %qs with nonconstant shape in namelist %qs at %L"
 msgstr "funktiota %<__builtin_next_arg%> kutsuttu ilman argumenttia"
 
@@ -63410,17 +63392,17 @@ msgid "NAMELIST object %qs with nonconstant character length in namelist %qs at 
 msgstr "funktiota %<__builtin_next_arg%> kutsuttu ilman argumenttia"
 
 #: fortran/resolve.c:14535
-#, fuzzy, gcc-internal-format
+#, gcc-internal-format
 msgid "NAMELIST object %qs was declared PRIVATE and cannot be member of PUBLIC namelist %qs at %L"
 msgstr "funktiota %<__builtin_next_arg%> kutsuttu ilman argumenttia"
 
 #: fortran/resolve.c:14557
-#, fuzzy, gcc-internal-format
+#, gcc-internal-format
 msgid "NAMELIST object %qs has use-associated PRIVATE components and cannot be member of namelist %qs at %L"
 msgstr "funktiota %<__builtin_next_arg%> kutsuttu ilman argumenttia"
 
 #: fortran/resolve.c:14568
-#, fuzzy, gcc-internal-format
+#, gcc-internal-format
 msgid "NAMELIST object %qs has PRIVATE components and cannot be a member of PUBLIC namelist %qs at %L"
 msgstr "funktiota %<__builtin_next_arg%> kutsuttu ilman argumenttia"
 
@@ -63480,7 +63462,7 @@ msgid "PROCEDURE attribute conflicts with PROTECTED attribute at %L"
 msgstr "SAVE-attribuuttia kohdassa %L ei voida määritellä PURE-proseduurissa"
 
 #: fortran/resolve.c:14925
-#, fuzzy, gcc-internal-format
+#, gcc-internal-format
 msgid "%qs at %L has the CONTIGUOUS attribute but is not an array pointer or an assumed-shape or assumed-rank array"
 msgstr "Muuttujalla ”%s” kohdassa %L ei voi olla sekä POINTER- että BIND(C)-attribuutit"
 
@@ -63605,7 +63587,7 @@ msgid "Variable %s at %L of type EVENT_TYPE or with subcomponent of type EVENT_T
 msgstr ""
 
 #: fortran/resolve.c:15277
-#, fuzzy, gcc-internal-format
+#, gcc-internal-format
 msgid "The INTENT(OUT) dummy argument %qs at %L is ASSUMED SIZE and so cannot have a default initializer"
 msgstr "kääntäjänsisäisen ”%2$s”-funktion argumentin ”%1$s” kohdassa %3$L ei voi olla INTENT(IN)"
 
@@ -66286,6 +66268,7 @@ msgstr "luokkanimeä ei ole annettu %qs:n kanssa"
 
 #: c-family/c.opt:1519
 #, fuzzy, gcc-internal-format
+#| msgid "-fhandle-exceptions has been renamed -fexceptions (and is now on by default)"
 msgid "%<-fhandle-exceptions%> has been renamed %<-fexceptions%> (and is now on by default)"
 msgstr "-fhandle-exceptions on uudelleennimetty: -fexceptions (ja se on nyt oletuksena päällä)"
 

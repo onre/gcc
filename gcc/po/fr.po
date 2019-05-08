@@ -135,7 +135,7 @@ msgstr ""
 "Project-Id-Version: gcc 9.1.0\n"
 "Report-Msgid-Bugs-To: https://gcc.gnu.org/bugs/\n"
 "POT-Creation-Date: 2019-05-02 20:28+0000\n"
-"PO-Revision-Date: 2019-05-08 21:01+0200\n"
+"PO-Revision-Date: 2019-04-21 11:13+0200\n"
 "Last-Translator: Frédéric Marchal <fmarchal@perso.be>\n"
 "Language-Team: French <traduc@traduc.org>\n"
 "Language: fr\n"
@@ -1406,13 +1406,12 @@ msgid " All options with the desired characteristics have already been displayed
 msgstr " Toutes les options avec les caractéristiques désirées ont déjà été affichées\n"
 
 #: opts.c:1581
-#, c-format
+#, fuzzy, c-format
+#| msgid "invalid arguments for %<-falign-%s%> option: %qs"
 msgid ""
 "  Known valid arguments for %s option:\n"
 "   "
-msgstr ""
-"  Arguments valides connus pour l’option %s:\n"
-"   "
+msgstr "arguments invalides pour l'option %<-falign-%s%>: %qs"
 
 #: opts.c:1631
 msgid "The following options are target specific"
@@ -8060,8 +8059,10 @@ msgid "-fdoc-inc=<file>\tInclude a Ddoc macro <file>."
 msgstr "-fdoc-inc=<fichier>\tInclure un <fichier> macro Ddoc."
 
 #: d/lang.opt:234
+#, fuzzy
+#| msgid "Do not assume that standard C libraries and \"main\" exist."
 msgid "Assume that standard D runtime libraries and \"D main\" exist."
-msgstr "Supposer que les bibliothèques standards d’exécution du D et « D main » existent."
+msgstr "Ne pas supposer que les bibliothèques standards du C et « main » existent."
 
 #: d/lang.opt:238
 msgid "Display the frontend AST after parsing and semantic passes."
@@ -10967,17 +10968,19 @@ msgid "Cost to assume for a branch insn."
 msgstr "Coût supposé pour une insn de branchement."
 
 #: config/arm/arm.opt:308
+#, fuzzy
+#| msgid "Generate code which uses only the general registers."
 msgid "Generate code which uses the core registers only (r0-r14)."
-msgstr "Générer du code qui n’utilise que des registres du cœur (r0-r14)."
+msgstr "Générer du code qui n'utilise que des registres généraux."
 
 #: config/sparc/sparc.opt:30 config/sparc/sparc.opt:34
 #: config/visium/visium.opt:37
 msgid "Use hardware FP."
-msgstr "Utiliser l’unité en virgule flottante matérielle."
+msgstr "Utiliser l'unité en virgule flottante matérielle."
 
 #: config/sparc/sparc.opt:38 config/visium/visium.opt:41
 msgid "Do not use hardware FP."
-msgstr "Ne pas utiliser l’unité en virgule flottante matérielle."
+msgstr "Ne pas utiliser l'unité en virgule flottante matérielle."
 
 #: config/sparc/sparc.opt:42
 msgid "Use flat register window model."
@@ -19485,11 +19488,12 @@ msgid "using the range [%E, %E] for directive argument"
 msgstr "utilise la plage [%E, %E] pour l'argument de la directive"
 
 #: gimple-ssa-sprintf.c:3020
-#, gcc-internal-format
+#, fuzzy, gcc-internal-format
+#| msgid "%qE output %wu byte into a destination of size %wu"
 msgid "%qE output %wu byte into a destination of size %wu"
 msgid_plural "%qE output %wu bytes into a destination of size %wu"
 msgstr[0] "%qE écrit %wu octet dans une destination dont la taille est %wu"
-msgstr[1] "%qE écrit %wu octets dans une destination dont la taille est %wu"
+msgstr[1] "%qE écrit %wu octet dans une destination dont la taille est %wu"
 
 #: gimple-ssa-sprintf.c:3025
 #, gcc-internal-format
@@ -19507,11 +19511,12 @@ msgid "%qE output %wu or more bytes into a destination of size %wu"
 msgstr "%qE écrit %wu octets ou plus dans une destination dont la taille est %wu"
 
 #: gimple-ssa-sprintf.c:3046
-#, gcc-internal-format
+#, fuzzy, gcc-internal-format
+#| msgid "%qE output %wu byte"
 msgid "%qE output %wu byte"
 msgid_plural "%qE output %wu bytes"
 msgstr[0] "%qE écrit %wu octet"
-msgstr[1] "%qE écrit %wu octets"
+msgstr[1] "%qE écrit %wu octet"
 
 #: gimple-ssa-sprintf.c:3050
 #, gcc-internal-format
@@ -28253,7 +28258,8 @@ msgid "unknown tuning option (%s)"
 msgstr "option d'ajustement inconnue (%s)"
 
 #: config/aarch64/aarch64.c:11486
-#, gcc-internal-format
+#, fuzzy, gcc-internal-format
+#| msgid "incompatible options %<-mstack-protector-guard=global%> and%<-mstack-protector-guard-offset=%s%>"
 msgid "incompatible options %<-mstack-protector-guard=global%> and %<-mstack-protector-guard-offset=%s%>"
 msgstr "%<-mstack-protector-guard=global%> et %<-mstack-protector-guard-offset=%qs%> incompatibles"
 
@@ -28554,14 +28560,16 @@ msgid "%<-mspfp_fast%> not available on ARC600 or ARC601"
 msgstr "%<-mspfp_fast%> pas disponible sur ARC600 ou ARC601"
 
 #: config/arc/arc.c:953
-#, gcc-internal-format
+#, fuzzy, gcc-internal-format
+#| msgid "No FPX/FPU mixing allowed"
 msgid "no FPX/FPU mixing allowed"
-msgstr "le mélange de FPX/FPU est interdit"
+msgstr "Le mélange de FPX/FPU est interdit"
 
 #: config/arc/arc.c:958
-#, gcc-internal-format
+#, fuzzy, gcc-internal-format
+#| msgid "PIC is only supported for RTPs"
 msgid "PIC is not supported for %qs"
-msgstr "PIC n’est pas supporté pour %qs"
+msgstr "PIC est uniquement supporté pour RTP"
 
 #: config/arc/arc.c:1021
 #, gcc-internal-format
@@ -28607,24 +28615,28 @@ msgstr "l'option %<-mrgf-banked-regs%> est uniquement valable pour les processeu
 #. translated.  They are like keywords which one can relate with the
 #. architectural choices taken for an ARC CPU implementation.
 #: config/arc/arc.c:1227
-#, gcc-internal-format
+#, fuzzy, gcc-internal-format
+#| msgid "Option %s=%s is not available for %s CPU."
 msgid "option %<%s=%s%> is not available for %qs CPU"
-msgstr "l’option %<%s=%s%> n’est pas disponible pour le processeur %qs"
+msgstr "L'option %s=%s n'est pas disponible pour le processeur %s."
 
 #: config/arc/arc.c:1232
-#, gcc-internal-format
+#, fuzzy, gcc-internal-format
+#| msgid "Option %s is ignored, the default value %s is considered for %s CPU."
 msgid "option %qs is ignored, the default value %qs is considered for %qs CPU"
-msgstr "l’option %qs est ignorée, la valeur par défaut %qs est considérée pour le processeur %qs"
+msgstr "L'option %s est ignorée, la valeur par défaut %s est considérée pour le processeur %s."
 
 #: config/arc/arc.c:1240
-#, gcc-internal-format
+#, fuzzy, gcc-internal-format
+#| msgid "Option %s is not available for %s CPU"
 msgid "option %qs is not available for %qs CPU"
-msgstr "l’option %qs n'est pas disponible pour le processeur %qs"
+msgstr "L'option %s n'est pas disponible pour le processeur %s"
 
 #: config/arc/arc.c:1245
-#, gcc-internal-format
+#, fuzzy, gcc-internal-format
+#| msgid "Unset option %s is ignored, it is always enabled for %s CPU."
 msgid "unset option %qs is ignored, it is always enabled for %qs CPU"
-msgstr "supprimer la définition de l’option %qs est ignoré, elle est toujours activée pour le processeur %qs"
+msgstr "Supprimer la définition de l'option %s est ignoré, elle est toujours activée pour le processeur %s."
 
 #: config/arc/arc.c:1812
 #, gcc-internal-format, gfc-internal-format
@@ -28746,12 +28758,14 @@ msgid "unknown builtin immediate operand type for operand %d"
 msgstr "type d'opérande immédiat de la fonction intégrée inconnu pour l'opérande %d"
 
 #: config/arc/arc.c:7273
-#, gcc-internal-format
+#, fuzzy, gcc-internal-format
+#| msgid "register number must be a compile-time constant. Try giving higher optimization levels"
 msgid "register number must be a compile-time constant.  Try giving higher optimization levels"
 msgstr "le numéro de registre doit être une constante à la compilation. Essayez à des niveaux d'optimisation supérieurs"
 
 #: config/arc/arc.c:8268
-#, gcc-internal-format
+#, fuzzy, gcc-internal-format
+#| msgid "Insn addresses not set after shorten_branches"
 msgid "insn addresses not set after shorten_branches"
 msgstr "les adresses des insn ne sont pas définies après shorten_branches"
 
@@ -29158,7 +29172,7 @@ msgstr "ABI VFP en virgule flottante matérielle du Thumb-1"
 #: config/arm/arm.c:6117
 #, gcc-internal-format
 msgid "argument of type %qT not permitted with -mgeneral-regs-only"
-msgstr "argument de type %qT pas permis avec -mgeneral-regs-only"
+msgstr ""
 
 #: config/arm/arm.c:6501 config/arm/arm.c:6714 config/arm/arm.c:6747
 #: config/arm/arm.c:27083
@@ -30615,9 +30629,10 @@ msgid "no dispatcher found for the versioning attributes"
 msgstr "pas de répartiteur trouvé pour les attributs de version"
 
 #: config/i386/i386.c:32300
-#, gcc-internal-format
+#, fuzzy, gcc-internal-format
+#| msgid "value %qs is not supported by attribute %<target%>"
 msgid "ISA %qs is not supported in %<target%> attribute, use %<arch=%> syntax"
-msgstr "l’ISA %qs n'est pas supportée par l'attribut %<target%>, utilisez la syntaxe %<arch=%>"
+msgstr "la valeur %qs n'est pas supportée par l'attribut %<target%>"
 
 #: config/i386/i386.c:32311
 #, gcc-internal-format, gfc-internal-format
@@ -53125,9 +53140,10 @@ msgid "MODULE prefix at %C"
 msgstr "Préfixe de MODULE à %C"
 
 #: fortran/decl.c:6130
-#, gcc-internal-format, gfc-internal-format
+#, fuzzy, gcc-internal-format, gfc-internal-format
+#| msgid "MODULE PROCEDURE at %C must be in a generic module interface"
 msgid "MODULE prefix at %C found outside of a module, submodule, or interface"
-msgstr "préfixe MODULE à %C trouvé en dehors d'un module, sous-module ou interface"
+msgstr "MODULE PROCEDURE à %C doit être dans une interface de module générique"
 
 #: fortran/decl.c:6177
 #, gcc-internal-format, gfc-internal-format

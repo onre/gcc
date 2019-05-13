@@ -696,7 +696,7 @@ handle_cycle (const arc_vector_t &edges, int64_t &count)
   for (unsigned i = 0; i < edges.size (); i++)
     edges[i]->cs_count -= cycle_count;
 
-  gcc_assert (cycle_count >= 0);
+  gcc_assert (cycle_count > 0);
 }
 
 /* Unblock a block U from BLOCKED.  Apart from that, iterate all blocks
@@ -765,7 +765,8 @@ circuit (block_info *v, arc_vector_t &path, block_info *start,
 	  handle_cycle (path, count);
 	  loop_found = true;
 	}
-      else if (find (blocked.begin (), blocked.end (), w) == blocked.end ())
+      else if (!path_contains_zero_cycle_arc (path)
+	       &&  find (blocked.begin (), blocked.end (), w) == blocked.end ())
 	loop_found |= circuit (w, path, start, blocked, block_lists, linfo,
 			       count);
 

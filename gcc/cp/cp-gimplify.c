@@ -2677,7 +2677,7 @@ cp_fold (tree x)
     case TREE_VEC:
       {
 	bool changed = false;
-	vec<tree, va_gc> *vec = make_tree_vector ();
+	releasing_vec vec;
 	int i, n = TREE_VEC_LENGTH (x);
 	vec_safe_reserve (vec, n);
 
@@ -2696,8 +2696,6 @@ cp_fold (tree x)
 	      TREE_VEC_ELT (r, i) = (*vec)[i];
 	    x = r;
 	  }
-
-	release_tree_vector (vec);
       }
 
       break;

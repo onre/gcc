@@ -702,7 +702,6 @@ static tree
 build_vec_init_elt (tree type, tree init, tsubst_flags_t complain)
 {
   tree inner_type = strip_array_types (type);
-  vec<tree, va_gc> *argvec;
 
   if (integer_zerop (array_type_nelts_total (type))
       || !CLASS_TYPE_P (inner_type))
@@ -715,7 +714,7 @@ build_vec_init_elt (tree type, tree init, tsubst_flags_t complain)
 	      || (same_type_ignoring_top_level_qualifiers_p
 		  (type, TREE_TYPE (init))));
 
-  argvec = make_tree_vector ();
+  releasing_vec argvec;
   if (init)
     {
       tree init_type = strip_array_types (TREE_TYPE (init));
@@ -727,7 +726,6 @@ build_vec_init_elt (tree type, tree init, tsubst_flags_t complain)
   init = build_special_member_call (NULL_TREE, complete_ctor_identifier,
 				    &argvec, inner_type, LOOKUP_NORMAL,
 				    complain);
-  release_tree_vector (argvec);
 
   /* For a trivial constructor, build_over_call creates a TARGET_EXPR.  But
      we don't want one here because we aren't creating a temporary.  */
@@ -1455,7 +1453,7 @@ strip_typedefs (tree t, bool *remove_attributes)
   if (TREE_CODE (t) == TREE_LIST)
     {
       bool changed = false;
-      vec<tree,va_gc> *vec = make_tree_vector ();
+      releasing_vec vec;
       tree r = t;
       for (; t; t = TREE_CHAIN (t))
 	{
@@ -1467,7 +1465,6 @@ strip_typedefs (tree t, bool *remove_attributes)
 	}
       if (changed)
 	r = build_tree_list_vec (vec);
-      release_tree_vector (vec);
       return r;
     }
 
@@ -1755,7 +1752,7 @@ strip_typedefs_expr (tree t, bool *remove_attributes)
 
     case TREE_LIST:
       {
-	vec<tree, va_gc> *vec = make_tree_vector ();
+	releasing_vec vec;
 	bool changed = false;
 	tree it;
 	for (it = t; it; it = TREE_CHAIN (it))
@@ -1774,14 +1771,13 @@ strip_typedefs_expr (tree t, bool *remove_attributes)
 	  }
 	else
 	  r = t;
-	release_tree_vector (vec);
 	return r;
       }
 
     case TREE_VEC:
       {
 	bool changed = false;
-	vec<tree, va_gc> *vec = make_tree_vector ();
+	releasing_vec vec;
 	n = TREE_VEC_LENGTH (t);
 	vec_safe_reserve (vec, n);
 	for (i = 0; i < n; ++i)
@@ -1802,7 +1798,6 @@ strip_typedefs_expr (tree t, bool *remove_attributes)
 	  }
 	else
 	  r = t;
-	release_tree_vector (vec);
 	return r;
       }
 
@@ -3359,7 +3354,6 @@ build_min_non_dep_op_overload (enum tree_code op,
   va_list p;
   int nargs, expected_nargs;
   tree fn, call;
-  vec<tree, va_gc> *args;
 
   non_dep = extract_call_expr (non_dep);
 
@@ -3373,7 +3367,7 @@ build_min_non_dep_op_overload (enum tree_code op,
     expected_nargs += 1;
   gcc_assert (nargs == expected_nargs);
 
-  args = make_tree_vector ();
+  releasing_vec args;
   va_start (p, overload);
 
   if (TREE_CODE (TREE_TYPE (overload)) == FUNCTION_TYPE)
@@ -3403,7 +3397,6 @@ build_min_non_dep_op_overload (enum tree_code op,
 
   va_end (p);
   call = build_min_non_dep_call_vec (non_dep, fn, args);
-  release_tree_vector (args);
 
   tree call_expr = extract_call_expr (call);
   KOENIG_LOOKUP_P (call_expr) = KOENIG_LOOKUP_P (non_dep);

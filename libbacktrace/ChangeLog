@@ -1,10 +1,8 @@
-2019-08-12  Release Manager
+2019-05-14  Rainer Orth  <ro@CeBiTec.Uni-Bielefeld.DE>
 
-	* GCC 9.2.0 released.
-
-2019-05-03  Release Manager
-
-	* GCC 9.1.0 released.
+	* configure.ac (have_dl_iterate_phdr): Remove *-*-solaris2.10*
+	handling.
+	* configure: Regenerate.
 
 2019-03-11  Ian Lance Taylor  <iant@golang.org>
 

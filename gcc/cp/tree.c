@@ -2385,8 +2385,7 @@ is_overloaded_fn (tree x)
       || (TREE_CODE (x) == OVERLOAD && !OVL_SINGLE_P (x)))
     return 2;
 
-  return (TREE_CODE (x) == FUNCTION_DECL
-	  || TREE_CODE (x) == OVERLOAD);
+  return OVL_P (x);
 }
 
 /* X is the CALL_EXPR_FN of a CALL_EXPR.  If X represents a dependent name
@@ -2400,7 +2399,7 @@ dependent_name (tree x)
     return x;
   if (TREE_CODE (x) == TEMPLATE_ID_EXPR)
     x = TREE_OPERAND (x, 0);
-  if (TREE_CODE (x) == OVERLOAD || TREE_CODE (x) == FUNCTION_DECL)
+  if (OVL_P (x))
     return OVL_NAME (x);
   return NULL_TREE;
 }
@@ -2432,8 +2431,7 @@ maybe_get_fns (tree from)
   if (TREE_CODE (from) == TEMPLATE_ID_EXPR)
     from = TREE_OPERAND (from, 0);
 
-  if (TREE_CODE (from) == OVERLOAD
-      || TREE_CODE (from) == FUNCTION_DECL)
+  if (OVL_P (from))
     return from;
 
   return NULL;

@@ -3837,6 +3837,8 @@ lower_rec_input_clauses (tree clauses, gimple_seq *ilist, gimple_seq *dlist,
 	case OMP_CLAUSE_IF:
 	  if (integer_zerop (OMP_CLAUSE_IF_EXPR (c)))
 	    sctx.max_vf = 1;
+	  else if (TREE_CODE (OMP_CLAUSE_IF_EXPR (c)) != INTEGER_CST)
+	    nonconst_simd_if = OMP_CLAUSE_IF_EXPR (c);
 	  break;
         case OMP_CLAUSE_SIMDLEN:
 	  if (integer_onep (OMP_CLAUSE_SIMDLEN_EXPR (c)))

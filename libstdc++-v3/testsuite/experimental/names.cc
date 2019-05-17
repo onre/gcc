@@ -22,9 +22,7 @@
 
 #include "../17_intro/names.cc"
 // Filesystem
-#if __has_include(<experimental/filesystem>)
-# include <experimental/filesystem>
-#endif
+#include <experimental/filesystem>
 // Library Fundamentals
 #include <experimental/algorithm>
 #include <experimental/any>
@@ -56,13 +54,11 @@
 #include <experimental/utility>
 #include <experimental/vector>
 // Networking
-#ifdef _GLIBCXX_HAS_GTHREADS
-# include <experimental/buffer>
-# include <experimental/internet>
-# include <experimental/io_context>
-# include <experimental/net>
-# include <experimental/netfwd>
-# include <experimental/socket>
-# include <experimental/timer>
-# include <experimental/executor>
-#endif
+#include <experimental/buffer>
+#include <experimental/internet>
+#include <experimental/io_context>
+#include <experimental/net>
+#include <experimental/netfwd>
+#include <experimental/socket>
+#include <experimental/timer>
+#include <experimental/executor>

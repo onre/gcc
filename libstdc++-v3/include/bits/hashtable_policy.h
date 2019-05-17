@@ -1791,6 +1791,9 @@ namespace __detail
     bool
     _M_equals(const _Key& __k, __hash_code __c, __node_type* __n) const
     {
+      static_assert(__is_invocable<const _Equal&, const _Key&, const _Key&>{},
+	  "key equality predicate must be invocable with two arguments of "
+	  "key type");
       return _Equal_hash_code<__node_type>::_S_equals(__c, *__n)
 	&& _M_eq()(__k, this->_M_extract()(__n->_M_v()));
     }

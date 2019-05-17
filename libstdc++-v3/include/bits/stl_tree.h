@@ -759,10 +759,6 @@ _GLIBCXX_BEGIN_NAMESPACE_VERSION
       _M_end() const _GLIBCXX_NOEXCEPT
       { return &this->_M_impl._M_header; }
 
-      static const_reference
-      _S_value(_Const_Link_type __x)
-      { return *__x->_M_valptr(); }
-
       static const _Key&
       _S_key(_Const_Link_type __x)
       {
@@ -800,10 +796,6 @@ _GLIBCXX_BEGIN_NAMESPACE_VERSION
       static _Const_Link_type
       _S_right(_Const_Base_ptr __x) _GLIBCXX_NOEXCEPT
       { return static_cast<_Const_Link_type>(__x->_M_right); }
-
-      static const_reference
-      _S_value(_Const_Base_ptr __x)
-      { return *static_cast<_Const_Link_type>(__x)->_M_valptr(); }
 
       static const _Key&
       _S_key(_Const_Base_ptr __x)

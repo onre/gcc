@@ -1671,7 +1671,8 @@ print_specific_help (unsigned int include_flags,
 	    description = _("The following options take joined arguments");
 	  else
 	    {
-	      internal_error ("unrecognized include_flags 0x%x passed to print_specific_help",
+	      internal_error ("unrecognized %<include_flags 0x%x%> passed "
+			      "to %<print_specific_help%>",
 			      include_flags);
 	      return;
 	    }
@@ -1982,7 +1983,7 @@ parse_no_sanitize_attribute (char *value)
 
       if (sanitizer_opts[i].name == NULL)
 	warning (OPT_Wattributes,
-		 "%<%s%> attribute directive ignored", q);
+		 "%qs attribute directive ignored", q);
 
       q = strtok (NULL, ",");
     }
@@ -2158,7 +2159,7 @@ print_help (struct gcc_options *opts, unsigned int lang_mask)
 		*pflags |= lang_flag;
 	      else
 		warning (0,
-			 "--help argument %q.*s is ambiguous, "
+			 "%<--help%> argument %q.*s is ambiguous, "
 			 "please be more specific",
 			 len, a);
 	    }
@@ -2167,7 +2168,7 @@ print_help (struct gcc_options *opts, unsigned int lang_mask)
 	*pflags |= lang_flag;
       else
 	warning (0,
-		 "unrecognized argument to --help= option: %q.*s",
+		 "unrecognized argument to %<--help=%> option: %q.*s",
 		 len, a);
 
       if (comma == NULL)
@@ -2824,8 +2825,8 @@ handle_param (struct gcc_options *opts, struct gcc_options *opts_set,
   arg = xstrdup (carg);
   equal = strchr (arg, '=');
   if (!equal)
-    error_at (loc, "%s: --param arguments should be of the form NAME=VALUE",
-	      arg);
+    error_at (loc, "%s: %qs arguments should be of the form NAME=VALUE",
+	      arg, "--param");
   else
     {
       *equal = '\0';
@@ -2835,10 +2836,10 @@ handle_param (struct gcc_options *opts, struct gcc_options *opts_set,
 	{
 	  const char *suggestion = find_param_fuzzy (arg);
 	  if (suggestion)
-	    error_at (loc, "invalid --param name %qs; did you mean %qs?",
-		      arg, suggestion);
+	    error_at (loc, "invalid %qs name %qs; did you mean %qs?",
+		      "--param", arg, suggestion);
 	  else
-	    error_at (loc, "invalid --param name %qs", arg);
+	    error_at (loc, "invalid %qs name %qs", "--param", arg);
 	}
       else
 	{
@@ -2846,7 +2847,7 @@ handle_param (struct gcc_options *opts, struct gcc_options *opts_set,
 	    value = integral_argument (equal + 1);
 
 	  if (value == -1)
-	    error_at (loc, "invalid --param value %qs", equal + 1);
+	    error_at (loc, "invalid %qs value %qs", "--param", equal + 1);
 	  else
 	    set_param_value (arg, value,
 			     opts->x_param_values, opts_set->x_param_values);

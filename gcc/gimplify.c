@@ -3305,6 +3305,10 @@ gimplify_call_expr (tree *expr_p, gimple_seq *pre_p, bool want_value)
 	  break;
 	}
 
+      case BUILT_IN_EH_RETURN:
+	cfun->calls_eh_return = true;
+	break;
+
       default:
         ;
       }

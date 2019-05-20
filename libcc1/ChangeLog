@@ -1,10 +1,7 @@
-2019-08-12  Release Manager
+2019-05-20  Nathan Sidwell  <nathan@acm.org>
 
-	* GCC 9.2.0 released.
-
-2019-05-03  Release Manager
-
-	* GCC 9.1.0 released.
+	* libcp1plugin.cc (plugin_add_using_namespace): Call renamed
+	finish_using_directive.
 
 2019-01-01  Jakub Jelinek  <jakub@redhat.com>
 

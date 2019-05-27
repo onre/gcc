@@ -1110,17 +1110,13 @@ Identifier_to_gnu (Node_Id gnat_node, tree *gnu_result_type_p)
     }
   else
     {
-      /* We use the Actual_Subtype only if it has already been elaborated,
-	 as we may be invoked precisely during its elaboration, otherwise
-	 the Etype.  Avoid using it for packed arrays to simplify things,
-	 except in a return statement because we need the actual size and
-	 the front-end does not make it explicit in this case.  */
+      /* We want to use the Actual_Subtype if it has already been elaborated,
+	 otherwise the Etype.  Avoid using Actual_Subtype for packed arrays to
+	 simplify things.  */
       if ((Ekind (gnat_entity) == E_Constant
-	   || Ekind (gnat_entity) == E_Variable
-	   || Is_Formal (gnat_entity))
+	   || Ekind (gnat_entity) == E_Variable || Is_Formal (gnat_entity))
 	  && !(Is_Array_Type (Etype (gnat_entity))
-	       && Present (Packed_Array_Impl_Type (Etype (gnat_entity)))
-	       && Nkind (Parent (gnat_node)) != N_Simple_Return_Statement)
+	       && Present (Packed_Array_Impl_Type (Etype (gnat_entity))))
 	  && Present (Actual_Subtype (gnat_entity))
 	  && present_gnu_tree (Actual_Subtype (gnat_entity)))
 	gnat_result_type = Actual_Subtype (gnat_entity);

@@ -1,5 +1,14 @@
 2019-05-27  Eric Botcazou  <ebotcazou@adacore.com>
 
+	* gnat.dg/expect2.adb: New test.
+	* gnat.dg/expect2_pkg.ads: New helper.
+
+2019-05-27  Eric Botcazou  <ebotcazou@adacore.com>
+
+	* gnat.dg/aliased2.adb: New test.
+
+2019-05-27  Eric Botcazou  <ebotcazou@adacore.com>
+
 	* gnat.dg/limited_with7.ad[sb]: New test.
 	* gnat.dg/limited_with7_pkg.ads: New helper.
 

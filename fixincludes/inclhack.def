@@ -2867,9 +2867,18 @@ fix = {
     c_fix_arg = "extern int %1(double);\n"
 		"extern int %1f(float);\n"
 		"extern int %1l(long double);\n"
+	    "#if !defined(__cplusplus)\n"
 		"#define %1(x) (sizeof(x) == sizeof(double) ? _%1(x) \\\n"
 		"               : sizeof(x) == sizeof(float) ? _%1f(x) \\\n"
-		"               : _%1l(x))\n";
+		"               : _%1l(x))\n"
+	    "#else\n"
+	    "namespace std\n"
+	    "{\n"
+	    "    inline int %1(double x) { return _%1(x); };\n"
+	    "    inline int %1f(float x) { return _%1f(x); };\n"
+	    "    inline int %1l(long double x) { return _%1l(x); };\n"
+	    "}\n"
+        "#endif\n";
 
     test_text = 
       "#define isnan(x) __generic(x,,, _isnan, _isnanf, _isnanl,,,)(x)\n";
@@ -2939,7 +2948,7 @@ fix = {
     select      = "^(#define[ \t]+PTHREAD_.*_INITIALIZER[ \t]+)(\\{ 0 \\})";
 
     mach	= "mips-sgi-irix6.5";
-    c_fix       = format;
+    c_fix  = format;
     c_fix_arg   = "%1{ %2 }";
     test_text   = "#define PTHREAD_MUTEX_INITIALIZER	{ 0 }\n"
 		  "#define PTHREAD_COND_INITIALIZER	{ 0 }\n"

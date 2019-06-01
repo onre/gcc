@@ -13,9 +13,18 @@
 extern int isnan(double);
 extern int isnanf(float);
 extern int isnanl(long double);
+#if !defined(__cplusplus)
 #define isnan(x) (sizeof(x) == sizeof(double) ? _isnan(x) \
                : sizeof(x) == sizeof(float) ? _isnanf(x) \
                : _isnanl(x))
+#else
+namespace std
+{
+    inline int isnan(double x) { return _isnan(x); };
+    inline int isnanf(float x) { return _isnanf(x); };
+    inline int isnanl(long double x) { return _isnanl(x); };
+}
+#endif
 
 
 #endif  /* IRIX___GENERIC1_CHECK */

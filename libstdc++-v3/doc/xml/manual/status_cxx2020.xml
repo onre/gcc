@@ -954,49 +954,16 @@ Feature-testing recommendations for C++</link>.
 
     <row>
       <entry>
-        <classname>polymorphic_allocator&lt;&gt;</classname>
-        as a vocabulary type
+        Mandating the Standard Library:
+        Clause 21 - Containers library
       </entry>
       <entry>
-        <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p0339r6.pdf">
-        P0339R6
+        <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p1463r1.pdf">
+        P1463R1
 	</link>
       </entry>
-      <entry align="center"> 9.1 </entry>
-      <entry />
-    </row>
-
-    <row>
-      <entry> Making std::underlying_type SFINAE-friendly </entry>
-      <entry>
-        <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p0340r3.html">
-        P0340R3
-	</link>
-      </entry>
-      <entry align="center"> 9.1 </entry>
-      <entry />
-    </row>
-
-    <row>
-      <entry> Make <code>create_directory()</code> Intuitive </entry>
-      <entry>
-        <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p1164r1.pdf">
-        P1164R1
-	</link>
-      </entry>
-      <entry align="center"> 8.3 </entry>
-      <entry> Treated as a DR for C++17 </entry>
-    </row>
-
-    <row>
-      <entry> Traits for [Un]bounded Arrays </entry>
-      <entry>
-        <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p1357r1.pdf">
-        P1357R1
-	</link>
-      </entry>
-      <entry align="center"> 9.1 </entry>
-      <entry> <code>__cpp_lib_bounded_array_traits &gt;= 201902L</code> </entry>
+      <entry align="center"> 10 </entry>
+      <entry/>
     </row>
 
   </tbody>

@@ -15635,6 +15635,26 @@ aarch64_declare_function_name (FILE *stream, const char* name,
   ASM_OUTPUT_LABEL (stream, name);
 }
 
+/* Implement ASM_OUTPUT_DEF_FROM_DECLS.  Output .variant_pcs for aliases.  */
+
+void
+aarch64_asm_output_alias (FILE *stream, const tree decl, const tree target)
+{
+  const char *name = XSTR (XEXP (DECL_RTL (decl), 0), 0);
+  const char *value = IDENTIFIER_POINTER (target);
+  aarch64_asm_output_variant_pcs (stream, decl, name);
+  ASM_OUTPUT_DEF (stream, name, value);
+}
+
+/* Implement ASM_OUTPUT_EXTERNAL.  Output .variant_pcs for undefined
+   function symbol references.  */
+
+void
+aarch64_asm_output_external (FILE *stream, const tree decl, const char* name)
+{
+  aarch64_asm_output_variant_pcs (stream, decl, name);
+}
+
 /* Triggered after a .cfi_startproc directive is emitted into the assembly file.
    Used to output the .cfi_b_key_frame directive when signing the current
    function with the B key.  */

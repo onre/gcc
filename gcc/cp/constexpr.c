@@ -2485,7 +2485,7 @@ diag_array_subscript (const constexpr_ctx *ctx, tree array, tree index)
 	    error ("array subscript value %qE is outside the bounds "
 	           "of array %qD of type %qT", sidx, array, arraytype);
 	  else
-	    error ("non-zero array subscript %qE is used with array %qD of "
+	    error ("nonzero array subscript %qE is used with array %qD of "
 		   "type %qT with unknown bounds", sidx, array, arraytype);
 	  inform (DECL_SOURCE_LOCATION (array), "declared here");
 	}
@@ -2493,7 +2493,7 @@ diag_array_subscript (const constexpr_ctx *ctx, tree array, tree index)
 	error ("array subscript value %qE is outside the bounds "
 	       "of array type %qT", sidx, arraytype);
       else
-	error ("non-zero array subscript %qE is used with array of type %qT "
+	error ("nonzero array subscript %qE is used with array of type %qT "
 	       "with unknown bounds", sidx, arraytype);
     }
 }

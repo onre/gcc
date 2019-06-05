@@ -9421,7 +9421,7 @@ warn_for_abs (location_t loc, tree fndecl, tree arg)
 	  if (SCALAR_FLOAT_TYPE_P (atype))
 	    warning_at (loc, OPT_Wabsolute_value,
 			"using integer absolute value function %qD when "
-			"argument is of floating point type %qT",
+			"argument is of floating-point type %qT",
 			fndecl, atype);
 	  else if (TREE_CODE (atype) == COMPLEX_TYPE)
 	    warning_at (loc, OPT_Wabsolute_value,
@@ -9444,16 +9444,16 @@ warn_for_abs (location_t loc, tree fndecl, tree arg)
 	{
 	  if (INTEGRAL_TYPE_P (atype))
 	    warning_at (loc, OPT_Wabsolute_value,
-			"using floating point absolute value function %qD "
+			"using floating-point absolute value function %qD "
 			"when argument is of integer type %qT", fndecl, atype);
 	  else if (DECIMAL_FLOAT_TYPE_P (atype))
 	    warning_at (loc, OPT_Wabsolute_value,
-			"using floating point absolute value function %qD "
-			"when argument is of decimal floating point type %qT",
+			"using floating-point absolute value function %qD "
+			"when argument is of decimal floating-point type %qT",
 			fndecl, atype);
 	  else if (TREE_CODE (atype) == COMPLEX_TYPE)
 	    warning_at (loc, OPT_Wabsolute_value,
-			"using floating point absolute value function %qD when "
+			"using floating-point absolute value function %qD when "
 			"argument is of complex type %qT", fndecl, atype);
 	  else
 	    gcc_unreachable ();
@@ -9471,7 +9471,7 @@ warn_for_abs (location_t loc, tree fndecl, tree arg)
 	  else if (SCALAR_FLOAT_TYPE_P (atype))
 	    warning_at (loc, OPT_Wabsolute_value,
 			"using complex absolute value function %qD when "
-			"argument is of floating point type %qT",
+			"argument is of floating-point type %qT",
 			fndecl, atype);
 	  else
 	    gcc_unreachable ();
@@ -9487,17 +9487,17 @@ warn_for_abs (location_t loc, tree fndecl, tree arg)
 	{
 	  if (INTEGRAL_TYPE_P (atype))
 	    warning_at (loc, OPT_Wabsolute_value,
-			"using decimal floating point absolute value "
+			"using decimal floating-point absolute value "
 			"function %qD when argument is of integer type %qT",
 			fndecl, atype);
 	  else if (SCALAR_FLOAT_TYPE_P (atype))
 	    warning_at (loc, OPT_Wabsolute_value,
-			"using decimal floating point absolute value "
-			"function %qD when argument is of floating point "
+			"using decimal floating-point absolute value "
+			"function %qD when argument is of floating-point "
 			"type %qT", fndecl, atype);
 	  else if (TREE_CODE (atype) == COMPLEX_TYPE)
 	    warning_at (loc, OPT_Wabsolute_value,
-			"using decimal floating point absolute value "
+			"using decimal floating-point absolute value "
 			"function %qD when argument is of complex type %qT",
 			fndecl, atype);
 	  else

@@ -4881,7 +4881,7 @@ class_array_fcn:
     parmse->expr = gfc_build_addr_expr (NULL_TREE, parmse->expr);
 
   /* Basically make this into
-     
+
      if (present)
        {
 	 if (contiguous)

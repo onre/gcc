@@ -1,6 +1,5 @@
 /* PR c/90760 */
 /* { dg-do compile } */
-/* { dg-require-alias "" } */
 /* { dg-require-named-sections "" } */
 
 void bar (void) {}

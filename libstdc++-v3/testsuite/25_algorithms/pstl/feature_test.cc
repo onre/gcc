@@ -17,7 +17,6 @@
 
 // { dg-options "-std=gnu++17" }
 // { dg-do preprocess { target c++17 } }
-// { dg-require-effective-target tbb-backend }
 
 #include <algorithm>
 #ifndef __cpp_lib_parallel_algorithm

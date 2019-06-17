@@ -580,19 +580,6 @@ _GLIBCXX_BEGIN_NAMESPACE_CXX11
     }
 
   /// Create a path from a UTF-8-encoded sequence of char
-  // TODO constrain with _Path<Source> and __value_type_is_char
-  template<typename _Source>
-    inline path
-    u8path(const _Source& __source)
-    {
-#ifdef _GLIBCXX_FILESYSTEM_IS_WINDOWS
-      return path{ path::string_type{__source} };
-#else
-      return path{ __source };
-#endif
-    }
-
-  /// Create a path from a UTF-8-encoded sequence of char
   // TODO constrain with _Path<InputIterator, InputIterator> and __value_type_is_char
   template<typename _InputIterator>
     inline path
@@ -611,6 +598,20 @@ _GLIBCXX_BEGIN_NAMESPACE_CXX11
 	    std::make_error_code(errc::illegal_byte_sequence)));
 #else
       return path{ __first, __last };
+#endif
+    }
+
+  /// Create a path from a UTF-8-encoded sequence of char
+  // TODO constrain with _Path<Source> and __value_type_is_char
+  template<typename _Source>
+    inline path
+    u8path(const _Source& __source)
+    {
+#ifdef _GLIBCXX_FILESYSTEM_IS_WINDOWS
+      std::string __s = path::_S_string_from_iter(__source);
+      return filesystem::u8path(__s.data(), __s.data() + __s.size());
+#else
+      return path{ __source };
 #endif
     }
 

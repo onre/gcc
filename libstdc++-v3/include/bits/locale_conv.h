@@ -86,22 +86,16 @@ _GLIBCXX_BEGIN_NAMESPACE_VERSION
 	  return false;
 	}
 
-      if (__result == codecvt_base::noconv)
-	{
-	  // The codecvt facet will only return noconv when the types are
-	  // the same, so avoid instantiating basic_string::assign otherwise
-	  if _GLIBCXX17_CONSTEXPR (is_same<typename _Codecvt::intern_type,
-					   typename _Codecvt::extern_type>())
-	    {
-	      __outstr.assign(__first, __last);
-	      __count = __last - __first;
-	    }
-	}
-      else
-	{
-	  __outstr.resize(__outchars);
-	  __count = __next - __first;
-	}
+      // The codecvt facet will only return noconv when the types are
+      // the same, so avoid instantiating basic_string::assign otherwise
+      if _GLIBCXX17_CONSTEXPR (is_same<typename _Codecvt::intern_type,
+				       typename _Codecvt::extern_type>())
+	if (__result == codecvt_base::noconv)
+	  {
+	    __outstr.assign(__first, __last);
+	    __count = __last - __first;
+	    return true;
+	  }
 
       __outstr.resize(__outchars);
       __count = __next - __first;

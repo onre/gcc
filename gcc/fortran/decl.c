@@ -8382,7 +8382,7 @@ attr_decl1 (void)
      to the first component, or '_data' field.  */
   if (sym->ts.type == BT_CLASS && sym->ts.u.derived->attr.is_class)
     {
-      /* gfc_set_array_spec set sym->attr not CLASS_DATA(sym)->attr.  Check
+      /* gfc_set_array_spec sets sym->attr not CLASS_DATA(sym)->attr.  Check
 	 for duplicate attribute here.  */
       if (CLASS_DATA(sym)->attr.dimension == 1 && as)
 	{

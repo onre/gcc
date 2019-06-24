@@ -1492,12 +1492,8 @@ vect_init_vector (stmt_vec_info stmt_info, tree val, tree type,
 		   promotion of invariant/external defs.  */
 		val = gimple_convert (&stmts, TREE_TYPE (type), val);
 	      for (gimple_stmt_iterator gsi2 = gsi_start (stmts);
-		   !gsi_end_p (gsi2); )
-		{
-		  init_stmt = gsi_stmt (gsi2);
-		  gsi_remove (&gsi2, false);
-		  vect_init_vector_1 (stmt_info, init_stmt, gsi);
-		}
+		   !gsi_end_p (gsi2); gsi_next (&gsi2))
+		vect_init_vector_1 (stmt_info, gsi_stmt (gsi2), gsi);
 	    }
 	}
       val = build_vector_from_val (type, val);

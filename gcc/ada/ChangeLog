@@ -1,3 +1,15 @@
+2019-06-24  Martin Sebor  <msebor@redhat.com>
+
+	* gcc-interface/utils.c (handle_nonnull_attribute): Quote attribute
+	name.
+
+2019-06-18  Arnaud Charlet  <charlet@adacore.com>
+
+PR ada/80590
+
+	* sem_ch5.adb (Analyze_Loop_Statement): Avoid exception propagation
+	during normal processing.
+
 2019-06-17  Arnaud Charlet  <charlet@adacore.com>
 
 PR ada/80590

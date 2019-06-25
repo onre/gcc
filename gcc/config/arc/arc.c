@@ -8959,7 +8959,7 @@ prepare_move_operands (rtx *operands, machine_mode mode)
   if (GET_CODE (operands[1]) == SYMBOL_REF)
     {
       enum tls_model model = SYMBOL_REF_TLS_MODEL (operands[1]);
-      if (MEM_P (operands[0]))
+      if (MEM_P (operands[0]) && flag_pic)
 	operands[1] = force_reg (mode, operands[1]);
       else if (model)
 	operands[1] = arc_legitimize_tls_address (operands[1], model);
@@ -8972,17 +8972,21 @@ prepare_move_operands (rtx *operands, machine_mode mode)
   if (MEM_P (operands[0])
       && !move_dest_operand (operands[0], mode))
     {
-      operands[1] = force_reg (mode, operands[1]);
-      if (!move_dest_operand (operands[0], mode))
-	{
-	  rtx addr = copy_to_mode_reg (Pmode, XEXP (operands[0], 0));
-	  /* This is like change_address_1 (operands[0], mode, 0, 1) ,
-	     except that we can't use that function because it is static.  */
-	  rtx pat = change_address (operands[0], mode, addr);
-	  MEM_COPY_ATTRIBUTES (pat, operands[0]);
-	  operands[0] = pat;
-	}
+      rtx tmp0 = copy_to_mode_reg (Pmode, XEXP (operands[0], 0));
+      rtx tmp1 = change_address (operands[0], mode, tmp0);
+      MEM_COPY_ATTRIBUTES (tmp1, operands[0]);
+      operands[0] = tmp1;
     }
+
+  /* Check if it is constant but it is not legitimized.  */
+  if (CONSTANT_P (operands[1])
+      && !arc_legitimate_constant_p (mode, operands[1]))
+    operands[1] = force_reg (mode, XEXP (operands[1], 0));
+  else if (MEM_P (operands[0])
+	   && ((CONSTANT_P (operands[1])
+		&& !satisfies_constraint_Cm3 (operands[1]))
+	       || MEM_P (operands[1])))
+    operands[1] = force_reg (mode, operands[1]);
 
   return false;
 }

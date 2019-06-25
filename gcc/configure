@@ -23905,6 +23905,11 @@ foo:	.long	25
 	tls_first_minor=15
 	tls_as_opt=--fatal-warnings
 	;;
+  *-*-irix6*)
+      # IRIX 6.5 rld and libc.so lack TLS support, so even if gas and gld
+      # with TLS support are in use, native TLS cannot work.
+      set_have_as_tls=no
+      ;;
   arm*-*-*)
     conftest_s='
 	.section ".tdata","awT",%progbits

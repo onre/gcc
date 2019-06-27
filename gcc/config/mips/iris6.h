@@ -44,6 +44,10 @@ extern const char *host_detect_local_cpu (int argc, const char **argv);
 # define MARCH_MTUNE_NATIVE_SPECS ""
 #endif
 
+/* Because we can. */
+#undef PREFERRED_DEBUGGING_TYPE
+#define PREFERRED_DEBUGGING_TYPE DWARF2_DEBUG
+
 /* Force the default ABI onto the command line in order to make the specs
    easier to write.  */
 #undef DRIVER_SELF_SPECS
@@ -222,6 +226,10 @@ extern int long_intmax;
     {						\
       if (long_intmax == -1)			\
 	long_intmax = mips_abi == ABI_64;	\
+      if (!global_options_set.x_dwarf_strict)	\
+	dwarf_strict = 1;			\
+      if (!global_options_set.x_dwarf_version)	\
+	dwarf_version = 2;			\
     }						\
   while (0)
 

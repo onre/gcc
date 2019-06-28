@@ -62,6 +62,7 @@ extern const char *host_detect_local_cpu (int argc, const char **argv);
 
 /* MIPS specific debugging info */
 /* #define MIPS_DEBUGGING_INFO 1 */
+#define SGUG_DEBUGGING_INFO 1
 
 /* Force the generation of dwarf .debug_frame sections even if not
    compiling -g.  This guarantees that we can unwind the stack.  */

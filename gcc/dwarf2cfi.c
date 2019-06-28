@@ -797,6 +797,7 @@ def_cfa_0 (dw_cfa_location *old_cfa, dw_cfa_location *new_cfa)
 	cfi->dw_cfi_opc = DW_CFA_def_cfa_offset;
       cfi->dw_cfi_oprnd1.dw_cfi_offset = const_offset;
     }
+#ifndef SGUG_DEBUGGING_INFO /* SGI dbx thinks this means no offset. */
   else if (new_cfa->offset.is_constant ()
 	   && known_eq (new_cfa->offset, old_cfa->offset)
 	   && old_cfa->reg != INVALID_REGNUM
@@ -811,6 +812,7 @@ def_cfa_0 (dw_cfa_location *old_cfa, dw_cfa_location *new_cfa)
       cfi->dw_cfi_opc = DW_CFA_def_cfa_register;
       cfi->dw_cfi_oprnd1.dw_cfi_reg_num = new_cfa->reg;
     }
+#endif
   else if (new_cfa->indirect == 0
 	   && new_cfa->offset.is_constant (&const_offset))
     {
@@ -3487,6 +3489,10 @@ bool
 dwarf2out_do_cfi_asm (void)
 {
   int enc;
+
+#ifdef SGUG_DEBUGGING_INFO
+  return false;
+#endif
 
   if (saved_do_cfi_asm != 0)
     return saved_do_cfi_asm > 0;

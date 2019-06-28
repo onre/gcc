@@ -2668,8 +2668,8 @@ powerpc-*-darwin*)
 	;;
 powerpc64-*-darwin*)
 	extra_options="${extra_options} ${cpu_type}/darwin.opt"
-	tmake_file="${tmake_file} ${cpu_type}/t-darwin64-biarch t-slibgcc"
-	tm_file="${tm_file} ${cpu_type}/darwin64-biarch.h"
+	tmake_file="${tmake_file} ${cpu_type}/t-darwin64 t-slibgcc"
+	tm_file="${tm_file} ${cpu_type}/darwin8.h ${cpu_type}/darwin64.h"
 	;;
 powerpc*-*-freebsd*)
 	tm_file="${tm_file} dbxelf.h elfos.h gnu-user.h ${fbsd_tm_file} rs6000/sysv4.h"

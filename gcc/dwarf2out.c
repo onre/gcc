@@ -24309,6 +24309,11 @@ gen_producer_string (void)
 	break;
       }
 
+  producer = XNEWVEC (char, plen + 1 + len + 1);
+  tail = producer;
+  sprintf (tail, "%s %s", language_string, version_string);
+  tail += plen;
+
   if (!dwarf_record_gcc_switches)
     {
 #ifdef SGUG_DEBUGGING_INFO
@@ -24326,11 +24331,6 @@ gen_producer_string (void)
 	}
 #endif
     }
-
-  producer = XNEWVEC (char, plen + 1 + len + 1);
-  tail = producer;
-  sprintf (tail, "%s %s", language_string, version_string);
-  tail += plen;
 
   FOR_EACH_VEC_ELT (switches, j, p)
     {

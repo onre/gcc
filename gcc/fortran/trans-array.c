@@ -4781,8 +4781,6 @@ gfc_could_be_alias (gfc_ss * lss, gfc_ss * rss)
 
   lsym_pointer = lsym->attr.pointer;
   lsym_target = lsym->attr.target;
-  lsym_pointer = lsym->attr.pointer;
-  lsym_target = lsym->attr.target;
 
   for (rref = rexpr->ref; rref != rss->info->data.array.ref; rref = rref->next)
     {

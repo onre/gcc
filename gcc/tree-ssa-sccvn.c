@@ -2058,16 +2058,11 @@ vn_reference_lookup_3 (ao_ref *ref, tree vuse, void *data_,
 	  if (res && res != (void *)-1)
 	    {
 	      vn_reference_t vnresult = (vn_reference_t) res;
+	      tree rhs = gimple_assign_rhs1 (def_stmt);
+	      if (TREE_CODE (rhs) == SSA_NAME)
+		rhs = SSA_VAL (rhs);
 	      if (vnresult->result
-		  && operand_equal_p (vnresult->result,
-				      gimple_assign_rhs1 (def_stmt), 0)
-		  /* We have to honor our promise about union type punning
-		     and also support arbitrary overlaps with
-		     -fno-strict-aliasing.  So simply resort to alignment to
-		     rule out overlaps.  Do this check last because it is
-		     quite expensive compared to the hash-lookup above.  */
-		  && multiple_p (get_object_alignment (ref->ref), ref->size)
-		  && multiple_p (get_object_alignment (lhs), ref->size))
+		  && operand_equal_p (vnresult->result, rhs, 0))
 		return res;
 	    }
 	}

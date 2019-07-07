@@ -3502,7 +3502,7 @@ gfc_conv_scalarized_array_ref (gfc_se * se, gfc_array_ref * ar)
     return;
 
   if (get_CFI_desc (NULL, expr, &decl, ar))
-      decl = build_fold_indirect_ref_loc (input_location, decl);
+    decl = build_fold_indirect_ref_loc (input_location, decl);
 
   /* A pointer array component can be detected from its field decl. Fix
      the descriptor, mark the resulting variable decl and pass it to
@@ -7852,7 +7852,7 @@ array_parameter_size (tree desc, gfc_expr *expr, tree *size)
 }
 
 /* Helper function - return true if the argument is a pointer.  */
- 
+
 static bool
 is_pointer (gfc_expr *e)
 {

@@ -2055,7 +2055,7 @@
   ""
   "slt%i2<u>\t%0,zero,%1"
   [(set_attr "type" "slt")
-   (set_attr "mode" "<MODE>")])
+   (set_attr "mode" "<X:MODE>")])
 
 (define_insn "*slt<u>_<X:mode><GPR:mode>"
   [(set (match_operand:GPR           0 "register_operand" "= r")
@@ -2064,7 +2064,7 @@
   ""
   "slt%i2<u>\t%0,%1,%2"
   [(set_attr "type" "slt")
-   (set_attr "mode" "<MODE>")])
+   (set_attr "mode" "<X:MODE>")])
 
 (define_insn "*sle<u>_<X:mode><GPR:mode>"
   [(set (match_operand:GPR           0 "register_operand" "=r")
@@ -2076,7 +2076,7 @@
   return "slt%i2<u>\t%0,%1,%2";
 }
   [(set_attr "type" "slt")
-   (set_attr "mode" "<MODE>")])
+   (set_attr "mode" "<X:MODE>")])
 
 ;;
 ;;  ....................

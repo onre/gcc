@@ -1424,6 +1424,7 @@ scan_sharing_clauses (tree clauses, omp_context *ctx)
 	case OMP_CLAUSE_SIMD:
 	case OMP_CLAUSE_NOGROUP:
 	case OMP_CLAUSE_DEFAULTMAP:
+	case OMP_CLAUSE_ORDER:
 	case OMP_CLAUSE_ASYNC:
 	case OMP_CLAUSE_WAIT:
 	case OMP_CLAUSE_GANG:
@@ -1617,6 +1618,7 @@ scan_sharing_clauses (tree clauses, omp_context *ctx)
 	case OMP_CLAUSE_SIMD:
 	case OMP_CLAUSE_NOGROUP:
 	case OMP_CLAUSE_DEFAULTMAP:
+	case OMP_CLAUSE_ORDER:
 	case OMP_CLAUSE_USE_DEVICE_PTR:
 	case OMP_CLAUSE_NONTEMPORAL:
 	case OMP_CLAUSE_ASYNC:

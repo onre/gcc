@@ -17,6 +17,7 @@
 ;; <http://www.gnu.org/licenses/>.
 ;;
 
+
 (define_attr "znver1_decode" "direct,vector,double"
   (const_string "direct"))
 

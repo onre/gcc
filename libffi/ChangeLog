@@ -1,10 +1,9 @@
-2019-08-12  Release Manager
+2019-09-03  Chung-Lin Tang  <cltang@codesourcery.com>
 
-	* GCC 9.2.0 released.
-
-2019-05-03  Release Manager
-
-	* GCC 9.1.0 released.
+	PR other/79543
+	* acinclude.m4 (LIBAT_CHECK_LINKER_FEATURES): Fix GNU ld --version
+	scanning to conform to the GNU Coding Standards.
+	* configure: Regenerate.
 
 2018-10-31  Joseph Myers  <joseph@codesourcery.com>
 

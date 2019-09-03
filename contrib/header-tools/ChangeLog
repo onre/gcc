@@ -1,10 +1,7 @@
-2019-08-12  Release Manager
+2019-09-03  Ulrich Weigand  <uweigand@de.ibm.com>
 
-	* GCC 9.2.0 released.
-
-2019-05-03  Release Manager
-
-	* GCC 9.1.0 released.
+	* README: Remove references to spu.
+	* reduce-headers: Likewise.
 
 2017-07-02  Richard Sandiford  <richard.sandiford@linaro.org>
 	    Alan Hayward  <alan.hayward@arm.com>

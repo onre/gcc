@@ -1,10 +1,11 @@
-2019-08-12  Release Manager
+2019-10-01  Maciej W. Rozycki  <macro@wdc.com>
 
-	* GCC 9.2.0 released.
-
-2019-05-03  Release Manager
-
-	* GCC 9.1.0 released.
+	* Makefile.in (toolexecdir, toolexeclibdir): New variables.
+	(LIBADA_FLAGS_TO_PASS): Add `toolexeclibdir'.
+	* configure.ac: Add `--enable-version-specific-runtime-libs'.
+	Update version-specific `toolexecdir' and `toolexeclibdir' from 
+	ADA_RTL_OBJ_DIR from gcc/ada/gcc-interface/Makefile.in.
+	* configure: Regenerate.
 
 2019-01-01  Jakub Jelinek  <jakub@redhat.com>
 

@@ -169,6 +169,10 @@ case "${target}" in
 	fi
 	;;
 
+  amdgcn*-*-*)
+	config_path="gcn accel"
+	;;
+
   *)
 	;;
 

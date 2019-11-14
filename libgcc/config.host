@@ -330,6 +330,9 @@ case ${host} in
 *-*-vxworks7*)
   tmake_file=t-vxworks7
   ;;
+*-*-vxworksae*)
+  tmake_file=t-vxworksae
+  ;;
 *-*-vxworks*)
   tmake_file=t-vxworks
   ;;
@@ -1534,6 +1537,9 @@ esac
 case ${target_thread_file} in
 vxworks)
 	case ${host} in
+	*-*-vxworksae)
+		tmake_file="${tmake_file} t-gthr-vxworksae"
+		;;
 	*-*-vxworks*)
 		tmake_file="${tmake_file} t-gthr-vxworks"
 		;;

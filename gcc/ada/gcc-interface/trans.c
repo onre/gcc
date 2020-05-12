@@ -7883,7 +7883,7 @@ gnat_to_gnu (Node_Id gnat_node)
 	  const bool use_memset_p
 	    = regular_array_type_p
 	      && Nkind (gnat_inner) == N_Aggregate
-	      && Is_Others_Aggregate (gnat_inner);
+	      && Is_Single_Aggregate (gnat_inner);
 
 	  /* If we use memset, we need to find the innermost expression.  */
 	  if (use_memset_p)
@@ -7893,7 +7893,7 @@ gnat_to_gnu (Node_Id gnat_node)
 		gnat_temp
 		  = Expression (First (Component_Associations (gnat_temp)));
 	      } while (Nkind (gnat_temp) == N_Aggregate
-		       && Is_Others_Aggregate (gnat_temp));
+		       && Is_Single_Aggregate (gnat_temp));
 	      gnu_rhs = gnat_to_gnu (gnat_temp);
 	    }
 	  else

@@ -13058,6 +13058,7 @@ is_base_type (tree type)
       return 1;
 
     case VOID_TYPE:
+    case OPAQUE_TYPE:
     case ARRAY_TYPE:
     case RECORD_TYPE:
     case UNION_TYPE:
@@ -25849,6 +25850,7 @@ gen_type_die_with_usage (tree type, dw_die_ref context_die,
       return;
 
     case VOID_TYPE:
+    case OPAQUE_TYPE:
     case INTEGER_TYPE:
     case REAL_TYPE:
     case FIXED_POINT_TYPE:

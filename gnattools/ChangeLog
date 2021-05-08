@@ -1,10 +1,7 @@
-2019-08-12  Release Manager
+2021-05-07  Bob Duff  <duff@adacore.com>
 
-	* GCC 9.2.0 released.
-
-2019-05-03  Release Manager
-
-	* GCC 9.1.0 released.
+	* Makefile.in (GENERATED_FILES_FOR_TOOLS): New variable.
+	($(GCC_DIR)/stamp-tools): Walk it for the first copy operation.
 
 2018-11-19  Alexandre Oliva <oliva@adacore.com>
 

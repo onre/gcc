@@ -1449,17 +1449,17 @@ Pragma_to_gnu (Node_Id gnat_node)
 	{
 	case Name_Off:
 	  if (optimize)
-	    post_error ("must specify -O0?", gnat_node);
+	    post_error ("must specify -O0??", gnat_node);
 	  break;
 
 	case Name_Space:
 	  if (!optimize_size)
-	    post_error ("must specify -Os?", gnat_node);
+	    post_error ("must specify -Os??", gnat_node);
 	  break;
 
 	case Name_Time:
 	  if (!optimize)
-	    post_error ("insufficient -O value?", gnat_node);
+	    post_error ("insufficient -O value??", gnat_node);
 	  break;
 
 	default:
@@ -1469,7 +1469,7 @@ Pragma_to_gnu (Node_Id gnat_node)
 
     case Pragma_Reviewable:
       if (write_symbols == NO_DEBUG)
-	post_error ("must specify -g?", gnat_node);
+	post_error ("must specify -g??", gnat_node);
       break;
 
     case Pragma_Warning_As_Error:
@@ -1570,17 +1570,17 @@ Pragma_to_gnu (Node_Id gnat_node)
 	    option_index = find_opt (option_string + 1, lang_mask);
 	    if (option_index == OPT_SPECIAL_unknown)
 	      {
-		post_error ("?unknown -W switch", gnat_node);
+		post_error ("unknown -W switch??", gnat_node);
 		break;
 	      }
 	    else if (!(cl_options[option_index].flags & CL_WARNING))
 	      {
-		post_error ("?-W switch does not control warning", gnat_node);
+		post_error ("-W switch does not control warning??", gnat_node);
 		break;
 	      }
 	    else if (!(cl_options[option_index].flags & lang_mask))
 	      {
-		post_error ("?-W switch not valid for Ada", gnat_node);
+		post_error ("-W switch not valid for Ada??", gnat_node);
 		break;
 	      }
 	    if (cl_options[option_index].flags & CL_JOINED)
@@ -6966,7 +6966,7 @@ gnat_to_gnu (Node_Id gnat_node)
 
 	  if (align != 0 && align < oalign && !TYPE_ALIGN_OK (gnu_obj_type))
 	    post_error_ne_tree_2
-	      ("?source alignment (^) '< alignment of & (^)",
+	      ("??source alignment (^) '< alignment of & (^)",
 	       gnat_node, Designated_Type (Etype (gnat_node)),
 	       size_int (align / BITS_PER_UNIT), oalign / BITS_PER_UNIT);
 	}
@@ -8281,7 +8281,7 @@ gnat_to_gnu (Node_Id gnat_node)
   /* If the result is a constant that overflowed, raise Constraint_Error.  */
   if (TREE_CODE (gnu_result) == INTEGER_CST && TREE_OVERFLOW (gnu_result))
     {
-      post_error ("?`Constraint_Error` will be raised at run time", gnat_node);
+      post_error ("??`Constraint_Error` will be raised at run time", gnat_node);
       gnu_result
 	= build1 (NULL_EXPR, gnu_result_type,
 		  build_call_raise (CE_Overflow_Check_Failed, gnat_node,
@@ -10318,7 +10318,7 @@ validate_unchecked_conversion (Node_Id gnat_node)
 	      || !alias_sets_conflict_p (get_alias_set (gnu_source_desig_type),
 					 target_alias_set)))
 	{
-	  post_error_ne ("?possible aliasing problem for type&",
+	  post_error_ne ("??possible aliasing problem for type&",
 			 gnat_node, Target_Type (gnat_node));
 	  post_error ("\\?use -fno-strict-aliasing switch for references",
 		      gnat_node);
@@ -10344,7 +10344,7 @@ validate_unchecked_conversion (Node_Id gnat_node)
 	      || !alias_sets_conflict_p (get_alias_set (gnu_source_desig_type),
 					 target_alias_set)))
 	{
-	  post_error_ne ("?possible aliasing problem for type&",
+	  post_error_ne ("??possible aliasing problem for type&",
 			 gnat_node, Target_Type (gnat_node));
 	  post_error ("\\?use -fno-strict-aliasing switch for references",
 		      gnat_node);

@@ -2885,7 +2885,7 @@ mips_const_insns (rtx x)
       return mips_build_integer (codes, INTVAL (x));
 
     case CONST_VECTOR:
-      if (ISA_HAS_MSA
+      if (MSA_SUPPORTED_MODE_P (GET_MODE (x))
 	  && mips_const_vector_same_int_p (x, GET_MODE (x), -512, 511))
 	return 1;
       /* Fall through.  */
@@ -21748,7 +21748,7 @@ mips_expand_vec_unpack (rtx operands[2], bool unsigned_p, bool high_p)
   rtx (*cmpFunc) (rtx, rtx, rtx);
   rtx tmp, dest, zero;
 
-  if (ISA_HAS_MSA)
+  if (MSA_SUPPORTED_MODE_P (imode))
     {
       switch (imode)
 	{
@@ -22010,7 +22010,7 @@ mips_expand_vector_init (rtx target, rtx vals)
 	all_same = false;
     }
 
-  if (ISA_HAS_MSA)
+  if (MSA_SUPPORTED_MODE_P (vmode))
     {
       if (all_same)
 	{

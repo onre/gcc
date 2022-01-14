@@ -24,60 +24,7 @@ along with GCC; see the file COPYING3.  If not see
 #include "coretypes.h"
 #include "tm.h"
 
-#ifdef __sgi__
-#include <invent.h>
-#include <sys/sbd.h>
-
-/* Cf. MIPS R10000 Microprocessor User Guide, Version 2.0, 14.13 Processor
-   Revision Identifier (PRId) Register (15).
-
-   http://techpubs.sgi.com/library/tpl/cgi-bin/getdoc.cgi/hdwr/bks/SGI_Developer/books/R10K_UM/sgi_html/t5.Ver.2.0.book_279.html  */
-
-static const struct cpu_types {
-  int impl;
-  const char *cpu;
-} cpu_types[] = {
-  { C0_IMP_R2000, "r2000" },
-  { C0_IMP_R3000, "r3000" },
-  { C0_IMP_R6000, "r6000" },
-  { C0_IMP_R4000, "r4000" },
-  { C0_IMP_R6000A, "r6000" },
-  { C0_IMP_R10000, "r10000" },
-  { C0_IMP_R12000, "r12000" },
-  { C0_IMP_R14000, "r14000" },
-  { C0_IMP_R8000,  "r8000" },
-  { C0_IMP_R4600,  "r4600" },
-  { C0_IMP_R4700,  "r4600" },
-  { C0_IMP_R4650,  "r4650" },
-  { C0_IMP_R5000,  "vr5000" },
-  { C0_IMP_RM7000, "rm7000" },
-  { C0_IMP_RM5271, "vr5000" },
-  { 0, 0 }
-};
-
-static int
-cputype (inventory_t *inv, void *arg)
-{
-  if (inv != NULL
-      && inv->inv_class == INV_PROCESSOR
-      && inv->inv_type == INV_CPUCHIP)
-    {
-      int i;
-      /* inv_state is the cpu revision number.  */
-      int impl = (inv->inv_state & C0_IMPMASK) >> C0_IMPSHIFT;
-
-      for (i = 0; cpu_types[i].cpu != NULL; i++)
-	if (cpu_types[i].impl == impl)
-	  {
-	    *((const char **) arg) = cpu_types[i].cpu;
-	    break;
-	  }
-    }
-  return 0;
-}
-#endif
-
-/* This will be called by the spec parser in gcc.c when it sees
+/* This will be called by the spec parser in gcc.cc when it sees
    a %:local_cpu_detect(args) construct.  Currently it will be called
    with either "arch" or "tune" as argument depending on if -march=native
    or -mtune=native is to be substituted.

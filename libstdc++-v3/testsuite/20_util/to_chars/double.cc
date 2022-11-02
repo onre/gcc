@@ -2821,8 +2821,8 @@ inline constexpr double_to_chars_testcase double_to_chars_test_cases[] = {
 
     // Test hexfloat corner cases.
     {0x1.728p+0, chars_format::hex, "1.728p+0"}, // instead of "2.e5p-1"
-    {0x0.0000000000001p-1022, chars_format::hex, "0.0000000000001p-1022"}, // instead of "1p-1074", min subnormal
-    {0x0.fffffffffffffp-1022, chars_format::hex, "0.fffffffffffffp-1022"}, // max subnormal
+    {0x0.0000000000001p-1022, chars_format::hex, "1p-1074"}, // min subnormal
+    {0x0.fffffffffffffp-1022, chars_format::hex, "1.ffffffffffffep-1023"}, // max subnormal
     {0x1p-1022, chars_format::hex, "1p-1022"}, // min normal
     {0x1.fffffffffffffp+1023, chars_format::hex, "1.fffffffffffffp+1023"}, // max normal
 

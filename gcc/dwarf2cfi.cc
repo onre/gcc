@@ -1499,10 +1499,12 @@ dwarf2out_frame_debug_cfa_val_expression (rtx set)
   update_row_reg_save (cur_row, dwf_regno (dest), cfi);
 }
 
-/* A subroutine of dwarf2out_frame_debug, process a REG_CFA_RESTORE note.  */
+/* A subroutine of dwarf2out_frame_debug, process a REG_CFA_RESTORE
+   note. When called with EMIT_CFI set to false emitting a CFI
+   statement is suppressed.  */
 
 static void
-dwarf2out_frame_debug_cfa_restore (rtx reg)
+dwarf2out_frame_debug_cfa_restore (rtx reg, bool emit_cfi)
 {
   gcc_assert (REG_P (reg));
 
@@ -1510,7 +1512,8 @@ dwarf2out_frame_debug_cfa_restore (rtx reg)
   if (!span)
     {
       unsigned int regno = dwf_regno (reg);
-      add_cfi_restore (regno);
+      if (emit_cfi)
+	add_cfi_restore (regno);
       update_row_reg_save (cur_row, regno, NULL);
     }
   else
@@ -1525,7 +1528,8 @@ dwarf2out_frame_debug_cfa_restore (rtx reg)
 	  reg = XVECEXP (span, 0, par_index);
 	  gcc_assert (REG_P (reg));
 	  unsigned int regno = dwf_regno (reg);
-	  add_cfi_restore (regno);
+	  if (emit_cfi)
+	    add_cfi_restore (regno);
 	  update_row_reg_save (cur_row, regno, NULL);
 	}
     }
@@ -2312,6 +2316,7 @@ dwarf2out_frame_debug (rtx_insn *insn)
 	break;
 
       case REG_CFA_RESTORE:
+      case REG_CFA_NO_RESTORE:
 	n = XEXP (note, 0);
 	if (n == NULL)
 	  {
@@ -2320,7 +2325,7 @@ dwarf2out_frame_debug (rtx_insn *insn)
 	      n = XVECEXP (n, 0, 0);
 	    n = XEXP (n, 0);
 	  }
-	dwarf2out_frame_debug_cfa_restore (n);
+	dwarf2out_frame_debug_cfa_restore (n, REG_NOTE_KIND (note) == REG_CFA_RESTORE);
 	handled_one = true;
 	break;
 

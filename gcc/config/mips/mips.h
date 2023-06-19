@@ -1182,7 +1182,8 @@ struct mips_cpu_info {
 				      && (MODE) == V2SFmode))		\
 				 && !TARGET_MIPS16)
 
-#define ISA_HAS_LWL_LWR		(mips_isa_rev <= 5 && !TARGET_MIPS16)
+#define ISA_HAS_LWL_LWR		(mips_isa_rev <= 5 \
+				 && (!TARGET_MIPS16 || ISA_HAS_MIPS16E2))
 
 #define ISA_HAS_IEEE_754_LEGACY	(mips_isa_rev <= 5)
 

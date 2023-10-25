@@ -3017,7 +3017,9 @@ Loop_Statement_to_gnu (Node_Id gnat_node)
 	}
 
       /* We use two different strategies to translate the loop, depending on
-	 whether optimization is enabled.
+	 whether optimization is enabled, except for the very peculiar case
+	 of a loop running over a boolean type where we use the simpler form
+	 in order to avoid manipulating negative values in a boolean context.
 
 	 If it is, we generate the canonical loop form expected by the loop
 	 optimizer and the loop vectorizer, which is the do-while form:
@@ -3063,7 +3065,9 @@ Loop_Statement_to_gnu (Node_Id gnat_node)
 
 	 which works in all cases.  */
 
-      if (optimize && !optimize_debug)
+      if (optimize
+	  && !optimize_debug
+	  && TREE_CODE (gnu_base_type) != BOOLEAN_TYPE)
 	{
 	  /* We can use the do-while form directly if GNU_FIRST-1 doesn't
 	     overflow.  */

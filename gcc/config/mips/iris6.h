@@ -269,27 +269,27 @@ extern void irix6_c_common_override_options (void);
 #define STARTFILE_SPEC \
   "%{!shared: \
      %{mabi=n32: \
-       %{mips4:%{pg:/usr/lib32/mips4/gcrt1.o%s} \
-         %{!pg:%{p:/usr/lib32/mips4/mcrt1.o%s /usr/lib32/mips4/libprof1.a%s} \
-           %{!p:/usr/lib32/mips4/crt1.o%s}}} \
-       %{!mips4:%{pg:/usr/lib32/mips3/gcrt1.o%s} \
-         %{!pg:%{p:/usr/lib32/mips3/mcrt1.o%s /usr/lib32/mips3/libprof1.a%s} \
-           %{!p:/usr/lib32/mips3/crt1.o%s}}}} \
+       %{mips4:%{pg:%R/usr/lib32/mips4/gcrt1.o%s} \
+         %{!pg:%{p:%R/usr/lib32/mips4/mcrt1.o%s %R/usr/lib32/mips4/libprof1.a%s} \
+           %{!p:%R/usr/lib32/mips4/crt1.o%s}}} \
+       %{!mips4:%{pg:%R/usr/lib32/mips3/gcrt1.o%s} \
+         %{!pg:%{p:%R/usr/lib32/mips3/mcrt1.o%s %R/usr/lib32/mips3/libprof1.a%s} \
+           %{!p:%R/usr/lib32/mips3/crt1.o%s}}}} \
      %{mabi=64: \
-       %{mips4:%{pg:/usr/lib64/mips4/gcrt1.o} \
-         %{!pg:%{p:/usr/lib64/mips4/mcrt1.o /usr/lib64/mips4/libprof1.a} \
-           %{!p:/usr/lib64/mips4/crt1.o}}} \
-       %{!mips4:%{pg:/usr/lib64/mips3/gcrt1.o} \
-         %{!pg:%{p:/usr/lib64/mips3/mcrt1.o /usr/lib64/mips3/libprof1.a} \
-           %{!p:/usr/lib64/mips3/crt1.o}}}}} \
+       %{mips4:%{pg:%R/usr/lib64/mips4/gcrt1.o} \
+         %{!pg:%{p:%R/usr/lib64/mips4/mcrt1.o %R/usr/lib64/mips4/libprof1.a} \
+           %{!p:%R/usr/lib64/mips4/crt1.o}}} \
+       %{!mips4:%{pg:%R/usr/lib64/mips3/gcrt1.o} \
+         %{!pg:%{p:%R/usr/lib64/mips3/mcrt1.o %R/usr/lib64/mips3/libprof1.a} \
+           %{!p:%R/usr/lib64/mips3/crt1.o}}}}} \
   irix-crti.o%s crtbegin.o%s"
 
 #undef LIB_SPEC
 #define LIB_SPEC \
-  "%{mabi=n32: %{mips4:-L/usr/lib32/mips4} %{!mips4:-L/usr/lib32/mips3} \
-     -L/usr/lib32} \
-   %{mabi=64: %{mips4:-L/usr/lib64/mips4} %{!mips4:-L/usr/lib64/mips3} \
-     -L/usr/lib64} \
+  "%{mabi=n32: %{mips4:-L%R/usr/lib32/mips4} %{!mips4:-L%R/usr/lib32/mips3} \
+     -L%R/usr/lib32} \
+   %{mabi=64: %{mips4:-L%R/usr/lib64/mips4} %{!mips4:-L%R/usr/lib64/mips3} \
+     -L%R/usr/lib64} \
    %{!shared:" \
      SUBTARGET_DONT_WARN_UNUSED_SPEC \
      " %{pthread:-lpthread} %{p:libprof1.a%s}%{pg:libprof1.a%s} -lc " \
@@ -306,10 +306,10 @@ extern void irix6_c_common_override_options (void);
   "%{Ofast|ffast-math|funsafe-math-optimizations:crtfastmath.o%s} \
    crtend.o%s irix-crtn.o%s \
    %{!shared: \
-     %{mabi=n32:%{mips4:/usr/lib32/mips4/crtn.o%s}\
-       %{!mips4:/usr/lib32/mips3/crtn.o%s}}\
-     %{mabi=64:%{mips4:/usr/lib64/mips4/crtn.o%s}\
-       %{!mips4:/usr/lib64/mips3/crtn.o%s}}}"
+     %{mabi=n32:%{mips4:%R/usr/lib32/mips4/crtn.o%s}\
+       %{!mips4:%R/usr/lib32/mips3/crtn.o%s}}\
+     %{mabi=64:%{mips4:%R/usr/lib64/mips4/crtn.o%s}\
+       %{!mips4:%R/usr/lib64/mips3/crtn.o%s}}}"
 
 /* Generic part of the LINK_SPEC.  */
 #undef LINK_SPEC

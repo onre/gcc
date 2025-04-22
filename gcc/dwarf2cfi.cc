@@ -3110,12 +3110,12 @@ create_pseudo_cfg (void)
   /* The first trace begins at the start of the function,
      and begins with the CIE row state.  */
   trace_info.create (16);
-  memset (&ti, 0, sizeof (ti));
-  ti.head = get_insns ();
-  ti.beg_row = cie_cfi_row;
-  ti.cfa_store = cie_cfi_row->cfa;
-  ti.cfa_temp.reg.set_by_dwreg (INVALID_REGNUM);
-  trace_info.quick_push (ti);
+  memset (&ti1, 0, sizeof (ti1));
+  ti1.head = get_insns ();
+  ti1.beg_row = cie_cfi_row;
+  ti1.cfa_store = cie_cfi_row->cfa;
+  ti1.cfa_temp.reg.set_by_dwreg (INVALID_REGNUM);
+  ti = trace_info.quick_push (ti1);
 
   if (cie_return_save)
     ti->regs_saved_in_regs.safe_push (*cie_return_save);

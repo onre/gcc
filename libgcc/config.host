@@ -146,6 +146,15 @@ m68k-*-*)
 microblaze*-*-*)
 	cpu_type=microblaze
 	;;
+mips-sgi-irix6.5*)
+	# All MIPS targets provide a full set of FP routines.
+	cpu_type=mips
+	tmake_file="mips/t-mips-irixfp"
+	# This doesn't work yet
+	if test "${host_address}" = 64; then
+		tmake_file="${tmake_file} mips/t-mips-irixfp64"
+	fi
+	;;
 mips*-*-*)
 	# All MIPS targets provide a full set of FP routines.
 	cpu_type=mips
@@ -903,6 +912,11 @@ microblaze*-linux*)
 microblaze*-*-elf)
 	tmake_file="${tmake_file} microblaze/t-microblaze t-fdpbit"
 	extra_parts="$extra_parts crtbeginS.o crtendS.o crtbeginT.o crti.o crtn.o"
+	;;
+mips-sgi-irix6.5*)
+	tmake_file="$tmake_file mips/t-irix6 t-crtfm mips/t-tpbit t-slibgcc mips/t-slibgcc-irix"
+	extra_parts="crtbegin.o crtend.o crtfastmath.o irix-crti.o irix-crtn.o"
+	md_unwind_header=mips/irix6-unwind.h
 	;;
 microblaze*-*-rtems*)
 	tmake_file="${tmake_file} microblaze/t-microblaze t-fdpbit"

@@ -865,7 +865,15 @@ AC_ARG_ENABLE(fixed-point,
       ;;
 
     mips*-*-*)
+      case $host in
+	mips*-sgi-irix*)
+	  AC_MSG_WARN([fixed-point is not supported on IRIX, ignored])
+	  enable_fixed_point=no
+	  ;;
+	*)
       enable_fixed_point=yes
+      ;;
+      esac
       ;;
     *)
       AC_MSG_WARN([fixed-point is not supported for this target, ignored])
@@ -3781,6 +3789,10 @@ elif test x$gcc_cv_ld != x; then
 	  gcc_cv_ld_dynamic_option="-adefault"
 	fi
 	;;
+      # IRIX 6 ld supports -Bstatic/-Bdynamic.
+      mips-sgi-irix6.5*)
+        gcc_cv_ld_static_dynamic=yes
+        ;;
       # Solaris 2 ld always supports -Bstatic/-Bdynamic.
       *-*-solaris2*)
         gcc_cv_ld_static_dynamic=yes

@@ -806,6 +806,7 @@ def_cfa_0 (dw_cfa_location *old_cfa, dw_cfa_location *new_cfa)
 	cfi->dw_cfi_opc = DW_CFA_def_cfa_offset;
       cfi->dw_cfi_oprnd1.dw_cfi_offset = const_offset;
     }
+#ifndef SGUG_DEBUGGING_INFO
   else if (new_cfa->offset.is_constant ()
 	   && known_eq (new_cfa->offset, old_cfa->offset)
 	   && old_cfa->reg != INVALID_REGNUM
@@ -820,6 +821,8 @@ def_cfa_0 (dw_cfa_location *old_cfa, dw_cfa_location *new_cfa)
       cfi->dw_cfi_opc = DW_CFA_def_cfa_register;
       cfi->dw_cfi_oprnd1.dw_cfi_reg_num = new_cfa->reg;
     }
+#endif
+
   else if (new_cfa->indirect == 0
 	   && new_cfa->offset.is_constant (&const_offset))
     {
@@ -2877,22 +2880,23 @@ static void
 create_pseudo_cfg (void)
 {
   bool saw_barrier, switch_sections;
-  dw_trace_info ti;
+  dw_trace_info ti1;
+  dw_trace_info* ti = &ti1;
   rtx_insn *insn;
   unsigned i;
 
   /* The first trace begins at the start of the function,
      and begins with the CIE row state.  */
   trace_info.create (16);
-  memset (&ti, 0, sizeof (ti));
-  ti.head = get_insns ();
-  ti.beg_row = cie_cfi_row;
-  ti.cfa_store = cie_cfi_row->cfa;
-  ti.cfa_temp.reg = INVALID_REGNUM;
-  trace_info.quick_push (ti);
+  memset (&ti1, 0, sizeof (ti1));
+  ti1.head = get_insns ();
+  ti1.beg_row = cie_cfi_row;
+  ti1.cfa_store = cie_cfi_row->cfa;
+  ti1.cfa_temp.reg = INVALID_REGNUM;
+  ti = trace_info.quick_push (ti1);
 
   if (cie_return_save)
-    ti.regs_saved_in_regs.safe_push (*cie_return_save);
+    ti->regs_saved_in_regs.safe_push (*cie_return_save);
 
   /* Walk all the insns, collecting start of trace locations.  */
   saw_barrier = false;
@@ -2914,11 +2918,12 @@ create_pseudo_cfg (void)
       else if (save_point_p (insn)
 	       && (LABEL_P (insn) || !saw_barrier))
 	{
-	  memset (&ti, 0, sizeof (ti));
-	  ti.head = insn;
-	  ti.switch_sections = switch_sections;
-	  ti.id = trace_info.length ();
-	  trace_info.safe_push (ti);
+	  dw_trace_info ti2;
+	  memset (&ti2, 0, sizeof (ti2));
+	  ti2.head = insn;
+	  ti2.switch_sections = switch_sections;
+	  ti2.id = trace_info.length ();
+	  ti = trace_info.safe_push (ti2);
 
 	  saw_barrier = false;
 	  switch_sections = false;
@@ -2929,19 +2934,18 @@ create_pseudo_cfg (void)
      avoiding stale pointer problems due to reallocation.  */
   trace_index
     = new hash_table<trace_info_hasher> (trace_info.length ());
-  dw_trace_info *tp;
-  FOR_EACH_VEC_ELT (trace_info, i, tp)
+  FOR_EACH_VEC_ELT (trace_info, i, ti)
     {
       dw_trace_info **slot;
 
       if (dump_file)
-	fprintf (dump_file, "Creating trace %u : start at %s %d%s\n", tp->id,
-		 rtx_name[(int) GET_CODE (tp->head)], INSN_UID (tp->head),
-		 tp->switch_sections ? " (section switch)" : "");
+	fprintf (dump_file, "Creating trace %u : start at %s %d%s\n", ti->id,
+		 rtx_name[(int) GET_CODE (ti->head)], INSN_UID (ti->head),
+		 ti->switch_sections ? " (section switch)" : "");
 
-      slot = trace_index->find_slot_with_hash (tp, INSN_UID (tp->head), INSERT);
+      slot = trace_index->find_slot_with_hash (ti, INSN_UID (ti->head), INSERT);
       gcc_assert (*slot == NULL);
-      *slot = tp;
+      *slot = ti;
     }
 }
 
@@ -3516,6 +3520,10 @@ bool
 dwarf2out_do_cfi_asm (void)
 {
   int enc;
+
+#ifdef SGUG_DEBUGGING_INFO
+  return false;
+#endif
 
   if (saved_do_cfi_asm != 0)
     return saved_do_cfi_asm > 0;

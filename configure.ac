@@ -508,7 +508,7 @@ if test x$enable_libgomp = x ; then
 	;;
     *-*-netbsd* | *-*-freebsd* | *-*-openbsd* | *-*-dragonfly*)
 	;;
-    *-*-solaris2* | *-*-hpux11*)
+    *-*-solaris2* | *-*-hpux11* | mips*-*-irix6*)
 	;;
     *-*-darwin* | *-*-aix*)
 	;;

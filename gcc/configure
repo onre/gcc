@@ -8033,6 +8033,8 @@ $as_echo "$as_me: WARNING: fixed-point is not supported on IRIX, ignored" >&2;}
 	*)
       enable_fixed_point=yes
       ;;
+      esac
+      ;;
     loongarch*-*-*)
       enable_fixed_point=yes
       ;;

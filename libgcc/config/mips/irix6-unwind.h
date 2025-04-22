@@ -159,20 +159,20 @@ mips_fallback_frame_state (struct _Unwind_Context *context,
      each register of interest can be found from the CFA.  */
   for (i = 0; i <= 31; i ++)
     {
-      fs->regs.reg[i].how = REG_SAVED_OFFSET;
+      fs->regs.how[i] = REG_SAVED_OFFSET;
       fs->regs.reg[i].loc.offset = SIGCTX_GREG_ADDR (i, sigctx) - k_cfa;
     }
 
   for (i = 0; i <= 31; i ++)
     {
-      fs->regs.reg[32+i].how = REG_SAVED_OFFSET;
+      fs->regs.how[32+i] = REG_SAVED_OFFSET;
       fs->regs.reg[32+i].loc.offset = SIGCTX_FPREG_ADDR (i, sigctx) - k_cfa;
     }
 
   /* State the rules to find the kernel's code "return address", which is the
      address of the active instruction when the signal was caught.  */
   fs->retaddr_column = DWARF_FRAME_RETURN_COLUMN;
-  fs->regs.reg[fs->retaddr_column].how = REG_SAVED_OFFSET;
+  fs->regs.how[fs->retaddr_column] = REG_SAVED_OFFSET;
   fs->regs.reg[fs->retaddr_column].loc.offset = (void *)&sigctx->sc_pc - k_cfa;
   fs->signal_frame = 1;
 

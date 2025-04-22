@@ -183,7 +183,7 @@ extern struct gcov_info *gcov_list;
 #define MAP_FAILED ((void *)-1)
 #endif
 
-#if !defined (MAP_ANONYMOUS) && defined (MAP_ANON)
+#if !defined (MAP_ANONYMOUS) && defined (MAP_ANON) && !defined(__sgi)
 #define MAP_ANONYMOUS MAP_ANON
 #endif
 #endif
@@ -424,12 +424,38 @@ gcov_counter_add (gcov_type *counter, gcov_type value,
 
 /* Allocate LENGTH with mmap function.  */
 
+#if defined(__sgi)
+
+/* TODO: clean this up. */
+
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+
+static inline void *
+malloc_mmap (size_t length)
+{
+  int mmapfd;
+  void *ret;
+
+  if ( (mmapfd = open ("/dev/zero", O_RDWR)) == -1) 
+    return NULL;
+
+  ret = mmap (NULL, length, PROT_READ | PROT_WRITE,
+	      MAP_PRIVATE, mmapfd, 0);
+
+  close (mmapfd);
+
+  return ret;
+}
+#else
 static inline void *
 malloc_mmap (size_t length)
 {
   return mmap (NULL, length, PROT_READ | PROT_WRITE,
 	       MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
 }
+#endif
 
 #endif
 

@@ -276,7 +276,7 @@ AC_DEFUN([GLIBCXX_CHECK_LINKER_FEATURES], [
     AC_MSG_CHECKING([for ld that supports -Wl,-z,relro])
     cxx_z_relo=`$LD -v --help 2>/dev/null | grep "z relro"`
     if test -n "$cxx_z_relo"; then
-      OPT_LDFLAGS="-Wl,-z,relro"
+      OPT_LDFLAGS="-Wl,-z,relro $OPT_LDFLAGS"
       ac_ld_relro=yes
     fi
     AC_MSG_RESULT($ac_ld_relro)

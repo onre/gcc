@@ -158,7 +158,7 @@ replace_filename_variables (char *filename)
 	  switch (*p)
 	    {
 	    case 'p':
-	      sprintf (buffer, "%d", getpid ());
+	      sprintf (buffer, "%ld", getpid ());
 	      replacement = buffer;
 	      p++;
 	      break;

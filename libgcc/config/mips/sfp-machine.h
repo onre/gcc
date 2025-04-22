@@ -22,6 +22,8 @@ a copy of the GCC Runtime Library Exception along with this program;
 see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
 <http://www.gnu.org/licenses/>.  */
 
+#if !defined(__sgi)
+
 #ifdef __mips64
 #define _FP_W_TYPE_SIZE		64
 #define _FP_W_TYPE		unsigned long long
@@ -190,3 +192,5 @@ typedef int __gcc_CMPtype __attribute__ ((mode (__libgcc_cmp_return__)));
 # define strong_alias(name, aliasname) _strong_alias(name, aliasname)
 # define _strong_alias(name, aliasname) \
   extern __typeof (name) aliasname __attribute__ ((alias (#name)));
+
+#endif /* !defined(__sgi) */

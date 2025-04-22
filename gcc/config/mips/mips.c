@@ -474,6 +474,12 @@ static bool mips_branch_likely;
 enum processor mips_arch;
 const struct mips_cpu_info *mips_arch_info;
 
+#if TARGET_IRIX6
+/* On IRIX 6, intmax_t and uintmax_t depend on __c99, which is only
+   available in C-family compilers.  See irix6_c_common_override_options.  */
+int long_intmax = -1;
+#endif
+
 /* The processor that we should tune the code for.  */
 enum processor mips_tune;
 const struct mips_cpu_info *mips_tune_info;
@@ -6682,6 +6688,9 @@ mips_build_builtin_va_list (void)
       layout_type (record);
       return record;
     }
+  else if (TARGET_IRIX6)
+    /* On IRIX 6, this type is 'char *'.  */
+    return build_pointer_type (char_type_node);
   else
     /* Otherwise, we use 'void *'.  */
     return ptr_type_node;
@@ -9883,6 +9892,8 @@ mips_file_start (void)
   /* Generate a special section to describe the ABI switches used to
      produce the resultant binary.  */
 
+  if (!TARGET_IRIX6)    {
+
   /* Record the ABI itself.  Modern versions of binutils encode
      this information in the ELF header flags, but GDB needs the
      information in order to correctly debug binaries produced by
@@ -9967,6 +9978,7 @@ mips_file_start (void)
   }
 #endif
 #endif
+  }
 
   /* If TARGET_ABICALLS, tell GAS to generate -KPIC code.  */
   if (TARGET_ABICALLS)
@@ -20173,6 +20185,10 @@ mips_option_override (void)
       REAL_MODE_FORMAT (DFmode) = &mips_double_format;
       REAL_MODE_FORMAT (TFmode) = &mips_quad_format;
     }
+
+#ifdef MIPS_TFMODE_FORMAT
+  REAL_MODE_FORMAT (TFmode) = &MIPS_TFMODE_FORMAT;
+#endif
 
   /* Make sure that the user didn't turn off paired single support when
      MIPS-3D support is requested.  */

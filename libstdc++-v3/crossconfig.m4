@@ -54,6 +54,13 @@ case "${host}" in
     AC_DEFINE(HAVE_SQRTF)
     ;;
 
+  mips-sgi-irix6.5)
+    GLIBCXX_CHECK_LINKER_FEATURES
+    GLIBCXX_CHECK_MATH_SUPPORT
+    GLIBCXX_CHECK_STDLIB_SUPPORT
+    # TODO: figure out what's supported and add here.
+    ;;
+
   spu-*-elf*)
     GLIBCXX_CHECK_COMPILER_FEATURES
     GLIBCXX_CHECK_LINKER_FEATURES

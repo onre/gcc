@@ -29148,7 +29148,7 @@ $as_echo "$ac_gcsections" >&6; }
 $as_echo_n "checking for ld that supports -Wl,-z,relro... " >&6; }
     cxx_z_relo=`$LD -v --help 2>/dev/null | grep "z relro"`
     if test -n "$cxx_z_relo"; then
-      OPT_LDFLAGS="-Wl,-z,relro"
+      OPT_LDFLAGS="-Wl,-z,relro $OPT_LDFLAGS"
       ac_ld_relro=yes
     fi
     { $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_ld_relro" >&5
@@ -34946,6 +34946,9 @@ done
 
     ;;
 
+  mips*-sgi-irix6.5)
+    ;;
+
   spu-*-elf*)
 
   # All these tests are for C++; save the language and the compiler flags.
@@ -35126,7 +35129,7 @@ $as_echo "$ac_gcsections" >&6; }
 $as_echo_n "checking for ld that supports -Wl,-z,relro... " >&6; }
     cxx_z_relo=`$LD -v --help 2>/dev/null | grep "z relro"`
     if test -n "$cxx_z_relo"; then
-      OPT_LDFLAGS="-Wl,-z,relro"
+      OPT_LDFLAGS="-Wl,-z,relro $OPT_LDFLAGS"
       ac_ld_relro=yes
     fi
     { $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_ld_relro" >&5
@@ -41238,7 +41241,7 @@ $as_echo "$ac_gcsections" >&6; }
 $as_echo_n "checking for ld that supports -Wl,-z,relro... " >&6; }
     cxx_z_relo=`$LD -v --help 2>/dev/null | grep "z relro"`
     if test -n "$cxx_z_relo"; then
-      OPT_LDFLAGS="-Wl,-z,relro"
+      OPT_LDFLAGS="-Wl,-z,relro $OPT_LDFLAGS"
       ac_ld_relro=yes
     fi
     { $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_ld_relro" >&5
@@ -53145,7 +53148,7 @@ $as_echo "$ac_gcsections" >&6; }
 $as_echo_n "checking for ld that supports -Wl,-z,relro... " >&6; }
     cxx_z_relo=`$LD -v --help 2>/dev/null | grep "z relro"`
     if test -n "$cxx_z_relo"; then
-      OPT_LDFLAGS="-Wl,-z,relro"
+      OPT_LDFLAGS="-Wl,-z,relro $OPT_LDFLAGS"
       ac_ld_relro=yes
     fi
     { $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_ld_relro" >&5
@@ -53410,7 +53413,7 @@ $as_echo "$ac_gcsections" >&6; }
 $as_echo_n "checking for ld that supports -Wl,-z,relro... " >&6; }
     cxx_z_relo=`$LD -v --help 2>/dev/null | grep "z relro"`
     if test -n "$cxx_z_relo"; then
-      OPT_LDFLAGS="-Wl,-z,relro"
+      OPT_LDFLAGS="-Wl,-z,relro $OPT_LDFLAGS"
       ac_ld_relro=yes
     fi
     { $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_ld_relro" >&5
@@ -53877,7 +53880,7 @@ $as_echo "$ac_gcsections" >&6; }
 $as_echo_n "checking for ld that supports -Wl,-z,relro... " >&6; }
     cxx_z_relo=`$LD -v --help 2>/dev/null | grep "z relro"`
     if test -n "$cxx_z_relo"; then
-      OPT_LDFLAGS="-Wl,-z,relro"
+      OPT_LDFLAGS="-Wl,-z,relro $OPT_LDFLAGS"
       ac_ld_relro=yes
     fi
     { $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_ld_relro" >&5
@@ -60245,7 +60248,7 @@ $as_echo "$ac_gcsections" >&6; }
 $as_echo_n "checking for ld that supports -Wl,-z,relro... " >&6; }
     cxx_z_relo=`$LD -v --help 2>/dev/null | grep "z relro"`
     if test -n "$cxx_z_relo"; then
-      OPT_LDFLAGS="-Wl,-z,relro"
+      OPT_LDFLAGS="-Wl,-z,relro $OPT_LDFLAGS"
       ac_ld_relro=yes
     fi
     { $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_ld_relro" >&5
@@ -66176,7 +66179,7 @@ $as_echo "$ac_gcsections" >&6; }
 $as_echo_n "checking for ld that supports -Wl,-z,relro... " >&6; }
     cxx_z_relo=`$LD -v --help 2>/dev/null | grep "z relro"`
     if test -n "$cxx_z_relo"; then
-      OPT_LDFLAGS="-Wl,-z,relro"
+      OPT_LDFLAGS="-Wl,-z,relro $OPT_LDFLAGS"
       ac_ld_relro=yes
     fi
     { $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_ld_relro" >&5
@@ -66377,7 +66380,7 @@ $as_echo "$ac_gcsections" >&6; }
 $as_echo_n "checking for ld that supports -Wl,-z,relro... " >&6; }
     cxx_z_relo=`$LD -v --help 2>/dev/null | grep "z relro"`
     if test -n "$cxx_z_relo"; then
-      OPT_LDFLAGS="-Wl,-z,relro"
+      OPT_LDFLAGS="-Wl,-z,relro $OPT_LDFLAGS"
       ac_ld_relro=yes
     fi
     { $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_ld_relro" >&5
@@ -66597,7 +66600,7 @@ $as_echo "$ac_gcsections" >&6; }
 $as_echo_n "checking for ld that supports -Wl,-z,relro... " >&6; }
     cxx_z_relo=`$LD -v --help 2>/dev/null | grep "z relro"`
     if test -n "$cxx_z_relo"; then
-      OPT_LDFLAGS="-Wl,-z,relro"
+      OPT_LDFLAGS="-Wl,-z,relro $OPT_LDFLAGS"
       ac_ld_relro=yes
     fi
     { $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_ld_relro" >&5
